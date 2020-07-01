@@ -11,12 +11,12 @@
         <%= link_to menu.ingredient, "/menus/show" %> 
       </span></br>
       <span class = "timestamp">
-        <%= time_ago_in_words(menu.created_at) %> 前に投稿
+        <%= l menu.created_at, format: :short %>
       </span>
     </ol>
   <% end %>
 </div>
 
 <div>
-  <%= link_to "新規投稿", "/menus/new" %>
+  <%= link_to "レシピ投稿", "/menus/new" %>
 </div>
