@@ -1,0 +1,27 @@
+<h1>レシピ投稿</h1>
+<%= flash.now[:danger] %>
+<%= form_for(@menu) do |f| %>
+  <div class="field">
+    <%= f.label :料理名 %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :材料 %><br />
+    <%= f.text_area :ingredient, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :作り方 %><br />
+    <%= f.text_area :recipe, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ひとこと %><br />
+    <%= f.text_field :memo, autofocus: true %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "投稿" %>
+  </div>
+<% end %>

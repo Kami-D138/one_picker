@@ -1,0 +1,11 @@
+<% unless user_signed_in? %>
+  <ol>
+    <%= link_to "ログイン", "/users/sign_in" %>
+  </ol>
+<% else %> 
+  <ol>
+    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+  </br>
+    <%= link_to "My 投稿一覧", "/menus" %>
+  </ol>
+<% end %>
