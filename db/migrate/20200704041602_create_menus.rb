@@ -4,11 +4,11 @@ class CreateMenus < ActiveRecord::Migration[5.1]
       t.string :name
       t.text :recipe
       t.text :ingredient
-      t.text :memo
+      t.string :memo
       t.integer :status
-      t.integer :user_id
-      t.integer :type_id
-      t.integer :genre_id
+      t.references :user, foreign_key: true
+      t.references :type, foreign_key: true
+      t.references :genre, foreign_key: true
 
       t.timestamps
     end

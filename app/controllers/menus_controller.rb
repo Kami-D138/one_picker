@@ -1,23 +1,24 @@
 class MenusController < ApplicationController
 
   def index
-    @menus = current_user.menus
+    @menus = current_user.menus.all
   end
 
   def show
+    @menu = Menu.find(params[:id])
   end
 
   def new
-    @menu = Menu.new
+    @menu = current_user.menus.build
   end
 
   def create 
     @menu = current_user.menus.build(menu_params)
+   
     if @menu.save
       flash[:success] = "投稿しました。"
       redirect_to menus_path
     else 
-      flash.now[:danger] = "投稿失敗"
       render 'new'
     end
   end

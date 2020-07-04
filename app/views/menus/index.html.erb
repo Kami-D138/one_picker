@@ -5,10 +5,10 @@
   <% @menus.each do |menu| %>
     <ol id = "menu-<%= menu.id %>">
       <span class=  "menu_name">
-        <%= link_to menu.name, "/menus/show" %>
+        <%= link_to menu.name, menu_path(menu.id) %>
       </span> </br>
       <span class = "menu_ingredient">
-        <%= link_to menu.ingredient, "/menus/show" %> 
+        <%= link_to menu.ingredient, menu_path(menu.id) %> 
       </span></br>
       <span class = "timestamp">
         <%= l menu.created_at, format: :short %>
