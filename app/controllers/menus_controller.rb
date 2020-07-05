@@ -9,7 +9,7 @@ class MenusController < ApplicationController
   end
 
   def new
-    @menu = current_user.menus.build
+    @menu = Menu.new
   end
 
   def create 
@@ -19,6 +19,7 @@ class MenusController < ApplicationController
       flash[:success] = "投稿しました。"
       redirect_to menus_path
     else 
+      flash.now[:danger] = "投稿できませんでした。"
       render 'new'
     end
   end
