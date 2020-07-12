@@ -10,6 +10,11 @@
               <%= link_to "ホーム", "/" %>
             </span>
           </li><span class="sr-only">(current)</span></a>
+          <li class="nav-item ml-auto">
+            <span class ="nav-link">
+              <%= link_to "PickApp", "/home/top" %>
+            </span>
+          </li>
           <% unless user_signed_in? %>
             <li class="nav-item ml-auto">
               <span class ="nav-link">
@@ -19,12 +24,12 @@
           <% else %>
             <li class="nav-item ml-auto">
               <span class ="nav-link">
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                <%= link_to "マイレシピ一覧", "/menus" %>
               </span>
             </li>
             <li class="nav-item ml-auto">
               <span class ="nav-link">
-                <%= link_to "マイレシピ一覧", "/menus" %>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
               </span>
             </li>
           <% end %>

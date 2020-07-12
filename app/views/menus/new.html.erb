@@ -1,7 +1,5 @@
 <h1>レシピ投稿</h1>
 <%= form_for(@menu) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <%= flash[:danger] %>
 
   <div class="field">
     <%= f.label :料理名 %><br />

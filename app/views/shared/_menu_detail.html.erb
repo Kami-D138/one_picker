@@ -1,0 +1,30 @@
+<div class = "menu_show">
+  <div class = "menu_name" >
+    <h5>料理名</h5>
+    <%= @menu.name %>
+  </div>
+  </br>
+
+  <div class = "menu_ingredient" >
+    <p>材料</p>
+    <%= @menu.ingredient %>
+  </div>
+  </br>
+
+  <div class = "menu_recipe" >
+    <p>作り方</p>
+    <%= @menu.recipe %>
+  </div>
+  </br>
+
+  <div class = "menu_memo" >
+    <p>お料理メモ</p>
+    <%= @menu.memo %>
+  </div>
+  </br>
+
+  <div class = "menu_genre" >
+    <p>料理ジャンル</p>
+    <%= @menu.genre.name %>の<%= @menu.type.name %>
+  </div>
+</div>
