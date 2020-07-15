@@ -1,7 +1,8 @@
 class MenusController < ApplicationController
+  before_action :authenticate_user!
 
   def index
-    @menus = current_user.menus.all
+      @menus = current_user.menus.all
   end
 
   def show
@@ -25,7 +26,25 @@ class MenusController < ApplicationController
   end
 
   def edit
+    @menu = current_user.menus.find(params[:id])
   end
+
+  def update 
+    @menu = Menu.find(params[:id])
+    if  @menu.update_attributes(menu_params)
+      flash[:success] = "編集しました。"
+      redirect_to menus_path
+    else 
+      flash.now[:danger] = "編集できませんでした。"
+      render 'edit'
+    end
+  end 
+
+  def destroy 
+    Menu.find(params[:id]).destroy
+    flash[:success] = "メニューを削除しました"
+    redirect_to menus_path
+  end 
 
   private 
 
@@ -33,4 +52,5 @@ class MenusController < ApplicationController
       params.require(:menu).permit(:name, :recipe, :ingredient,
                     :memo, :status, :user_id, :type_id, :genre_id)
     end
+
 end

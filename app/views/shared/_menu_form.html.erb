@@ -1,4 +1,3 @@
-<h1>レシピ編集</h1>
 <%= form_for(@menu) do |f| %>
   <%= render "shared/error_messages", object: f.object %>
 
@@ -31,8 +30,3 @@
     <%= f.label :ジャンル2%><br />
     <%= f.collection_select :type_id, Type.all, :id, :name, include_blank: "選択して下さい" %>
   </div>
-
-  <div class="btn">
-    <%= f.submit "編集", class: "btn btn-primary" %>
-  </div>
-<% end %>

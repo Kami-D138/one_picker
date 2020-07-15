@@ -13,10 +13,12 @@
       <span class = "timestamp">
         <%= l menu.created_at, format: :short %>
       </span>
+      <%= link_to "編集", edit_menu_path(menu.id)%>
+      <%= link_to "削除", menu_path(menu.id), method: :delete %>
     </ol>
   <% end %>
 </div>
 
 <div>
-  <%= link_to "レシピ投稿", "/menus/new" %>
+  <%= link_to "レシピ投稿", "/menus/new", class: "btn btn-outline-info" %>
 </div>
