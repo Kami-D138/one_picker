@@ -1,0 +1,37 @@
+<h1>レシピ投稿</h1>
+<%= form_for(@menu) do |f| %>
+
+  <div class="field">
+    <%= f.label :料理名 %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :材料 %><br />
+    <%= f.text_area :ingredient, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :作り方 %><br />
+    <%= f.text_area :recipe, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ひとこと %><br />
+    <%= f.text_field :memo, autofocus: true %>
+  </div>
+
+  <div class="field"> 
+  <%= f.label :ジャンル1 %><br />
+  <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
+</div>
+  
+  <div class="field"> 
+    <%= f.label :ジャンル2%><br />
+    <%= f.collection_select :type_id, Type.all, :id, :name, include_blank: "選択して下さい" %>
+  </div>
+
+  <div class="btn">
+    <%= f.submit "投稿", class: "btn btn-primary" %>
+  </div>
+<% end %>

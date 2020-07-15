@@ -1,0 +1,22 @@
+<h1>献立一覧</h1>
+<%= flash[:success] %>
+
+<div class = "test">
+  <% @menus.each do |menu| %>
+    <ol id = "menu-<%= menu.id %>">
+      <span class=  "menu_name">
+        <%= link_to menu.name, menu_path(menu.id) %>
+      </span> </br>
+      <span class = "menu_ingredient">
+        <%= link_to menu.ingredient, menu_path(menu.id) %> 
+      </span></br>
+      <span class = "timestamp">
+        <%= l menu.created_at, format: :short %>
+      </span>
+    </ol>
+  <% end %>
+</div>
+
+<div>
+  <%= link_to "レシピ投稿", "/menus/new" %>
+</div>
