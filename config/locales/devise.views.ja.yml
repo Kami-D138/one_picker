@@ -21,6 +21,18 @@ ja:
               too_long: "は%{count}文字以下に設定して下さい。"
               invalid: "は有効でありません。"
               confirmation: "が内容とあっていません。"
+        menu:
+          attributes:
+            name:
+              blank: "が入力されていません。"
+            recipe:
+              blank: "が入力されていません。"
+            ingredient:
+              blank: "が入力されていません。"
+            genre:
+              required: "を選択してください"
+            type:
+              required: "を選択してください"
     attributes:
       user:
         current_password: "現在のパスワード"
