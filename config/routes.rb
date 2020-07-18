@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   } 
   root 'home#welcome'
   get  '/home/top',    to: 'home#top'
-  get  '/home/sample', to: 'home#sample'
-  get  '/home/my_sample', to: 'home#my_sample'
+  get  '/home/common_recipe', to: 'home#common_recipe'
+  get  '/home/my_recipe', to: 'home#my_recipe'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources  :menus
 end

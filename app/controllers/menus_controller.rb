@@ -2,11 +2,11 @@ class MenusController < ApplicationController
   before_action :authenticate_user!
 
   def index
-      @menus = current_user.menus.all
+    @menus = current_user.menus.all
   end
 
   def show
-    @menu = Menu.find(params[:id])
+    @menu = Menu.find_by(id: params[:id])
   end
 
   def new
@@ -26,11 +26,11 @@ class MenusController < ApplicationController
   end
 
   def edit
-    @menu = current_user.menus.find(params[:id])
+    @menu = current_user.menus.find_by(id: params[:id])
   end
 
   def update 
-    @menu = Menu.find(params[:id])
+    @menu = Menu.find_by(id: params[:id])
     if  @menu.update_attributes(menu_params)
       flash[:success] = "編集しました。"
       redirect_to menus_path
@@ -41,9 +41,13 @@ class MenusController < ApplicationController
   end 
 
   def destroy 
-    Menu.find(params[:id]).destroy
-    flash[:success] = "メニューを削除しました"
-    redirect_to menus_path
+    if Menu.find_by(id: params[:id]).destroy
+      flash[:success] = "メニューを削除しました"
+      redirect_to menus_path
+    else 
+      render 'index'
+      flash[:danger] = "メニューの削除に失敗しました"
+    end
   end 
 
   private 
