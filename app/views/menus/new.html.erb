@@ -3,33 +3,38 @@
   <%= render "shared/error_messages", object: f.object %>
 
   <div class="field">
-    <%= f.label :料理名 %><br />
+    <%= f.label :料理名 %><br/>
     <%= f.text_field :name, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :材料 %><br />
+    <%= f.label :材料 %><br/>
     <%= f.text_area :ingredient, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :作り方 %><br />
+    <%= f.label :作り方 %><br/>
     <%= f.text_area :recipe, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :ひとこと %><br />
+    <%= f.label :ひとこと %><br/>
     <%= f.text_field :memo, autofocus: true %>
   </div>
 
   <div class="field"> 
-  <%= f.label :ジャンル1 %><br />
+  <%= f.label :ジャンル1 %><br/>
   <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
 </div>
   
   <div class="field"> 
-    <%= f.label :ジャンル2%><br />
+    <%= f.label :ジャンル2%><br/>
     <%= f.collection_select :type_id, Type.all, :id, :name, include_blank: "選択して下さい" %>
+  </div>
+
+  <div class="field"> 
+    <%= f.label :画像 %><br/>
+    <%= f.file_field :image %>
   </div>
 
   <div class="btn">

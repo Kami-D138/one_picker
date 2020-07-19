@@ -7,4 +7,5 @@ class Menu < ApplicationRecord
   validates  :ingredient,  presence: true
   validates  :memo, length: {maximum: 150}
   validates  :user_id, presence: true
+  mount_uploader :image, ImageUploader
 end

@@ -1,4 +1,11 @@
 <div class = "menu_show">
+
+  <% if @menu.image.present? %>
+    <div class = "menu_image" >
+      <%= image_tag @menu.image.to_s %>
+    </div>
+  <% end %>
+
   <div class = "menu_name" >
     <h5>料理名</h5>
     <%= @menu.name %>
