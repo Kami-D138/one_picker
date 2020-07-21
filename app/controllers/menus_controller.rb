@@ -15,7 +15,7 @@ class MenusController < ApplicationController
 
   def create 
     @menu = current_user.menus.build(menu_params)
-   
+    
     if @menu.save
       flash[:success] = "投稿しました。"
       redirect_to menus_path
