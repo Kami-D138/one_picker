@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200719152341) do
+ActiveRecord::Schema.define(version: 20200725104114) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
@@ -18,10 +18,17 @@ ActiveRecord::Schema.define(version: 20200719152341) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "ingredients", force: :cascade do |t|
+    t.string "item"
+    t.integer "menu_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "quantity"
+    t.index ["menu_id"], name: "index_ingredients_on_menu_id"
+  end
+
   create_table "menus", force: :cascade do |t|
     t.string "name"
-    t.text "recipe"
-    t.text "ingredient"
     t.string "memo"
     t.integer "status"
     t.integer "user_id"
@@ -33,6 +40,14 @@ ActiveRecord::Schema.define(version: 20200719152341) do
     t.index ["genre_id"], name: "index_menus_on_genre_id"
     t.index ["type_id"], name: "index_menus_on_type_id"
     t.index ["user_id"], name: "index_menus_on_user_id"
+  end
+
+  create_table "preparations", force: :cascade do |t|
+    t.string "step"
+    t.integer "menu_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["menu_id"], name: "index_preparations_on_menu_id"
   end
 
   create_table "types", force: :cascade do |t|

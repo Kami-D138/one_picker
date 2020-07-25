@@ -14,14 +14,28 @@
 
   <div class = "menu_ingredient" >
     <p>材料</p>
-    <%= @menu.ingredient %>
-  </div>
+      <% @ingredients.each do |ingredient|%>
+      <ul>
+        <li>
+          <%= ingredient.item %>
+          ・・・
+          <%= ingredient.quantity %></br>
+        </li>
+      </ul>
+      <% end %>
+    </div>
   </br>
 
-  <div class = "menu_recipe" >
+  <div class = "menu_preparation" >
     <p>作り方</p>
-    <%= @menu.recipe %>
-  </div>
+      <% while @n <= @preparations.count %>
+        <% @preparations.each do |preparation|%>
+          <%= @n %>.
+          <%= preparation.step %></br>
+          <% @n += 1 %>
+        <% end %>
+      <% end %>
+    </div>
   </br>
 
 <% if @menu.memo.present?%>

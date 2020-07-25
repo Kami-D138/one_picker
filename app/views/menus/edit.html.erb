@@ -7,19 +7,34 @@
     <%= f.text_field :name, autofocus: true %>
   </div>
 
-  <div class="field">
-    <%= f.label :材料 %><br/>
-    <%= f.text_area :ingredient, autofocus: true %>
+  <div class="ingredient">
+    <p>材料</p>
+    <%= f.fields_for :ingredients do |ingredient| %>
+      <div class="field">
+        <%= render "shared/ingredient_fields", f: ingredient%>
+          <div class="links">
+            <%= link_to_add_association "材料追加", f , :ingredients, partial: 'shared/ingredient_fields' %>
+          </div>
+      </div>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= f.label :作り方 %><br/>
-    <%= f.text_area :recipe, autofocus: true %>
+  
+</br>
+  <div class="step">
+    <p>調理方法</p>
+    <%= f.fields_for :preparations do |preparation| %>
+      <div class="field">
+        <%= render "shared/preparation_fields", f: preparation %>
+          <div class="links">
+            <%= link_to_add_association "手順追加", f , :preparations, partial: 'shared/preparation_fields' %>
+          </div>
+      </div>
+    <% end %>
   </div>
 
   <div class="field">
     <%= f.label :ひとこと %><br/>
-    <%= f.text_field :memo, autofocus: true %>
+    <%= f.text_field :memo%>
   </div>
 
   <div class="field"> 

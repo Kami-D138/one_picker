@@ -3,7 +3,6 @@ class CreateMenus < ActiveRecord::Migration[5.1]
     create_table :menus do |t|
       t.string :name
       t.text :recipe
-      t.text :ingredient
       t.string :memo
       t.integer :status
       t.references :user, foreign_key: true

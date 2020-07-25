@@ -7,10 +7,15 @@ class MenusController < ApplicationController
 
   def show
     @menu = Menu.find_by(id: params[:id])
+    @ingredients = Ingredient.where(menu_id: @menu.id)
+    @preparations = Preparation.where(menu_id: @menu.id)
+    @n = 1
   end
 
   def new
     @menu = Menu.new
+    @menu.ingredients.build
+    @menu.preparations.build
   end
 
   def create 
@@ -53,8 +58,7 @@ class MenusController < ApplicationController
   private 
 
     def menu_params
-      params.require(:menu).permit(:name, :recipe, :ingredient,
-                    :memo, :status, :user_id, :type_id, :genre_id, :image)
+      params.require(:menu).permit(:name, :recipe, :memo, :status, 
+            :user_id, :type_id, :genre_id, :image, ingredients_attributes: [:id, :item, :quantity, :_destroy], preparations_attributes: [:id, :step, :_destroy])
     end
-
 end

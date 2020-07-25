@@ -11,7 +11,10 @@
       </span> </br>
 
       <span class = "menu_ingredient">
-        <%= link_to menu.ingredient, menu_path(menu.id) %> 
+        <% @ingredients = Ingredient.where(menu_id: menu.id)%>
+        <% @ingredients.each do |ingredient|%>
+          <%= link_to ingredient.item, menu_path(menu.id) %> 
+        <% end %>
       </span></br>
     </div>
     

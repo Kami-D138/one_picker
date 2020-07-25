@@ -11,6 +11,9 @@ class HomeController < ApplicationController
   def common_recipe
     @menus = Menu.all
     @menu = Menu.all.sample
+    @ingredients = Ingredient.where(menu_id: @menu.id)
+    @preparations = Preparation.where(menu_id: @menu.id)
+    @n = 1
     if user_signed_in?
       @original_menus = current_user.menus
     end
@@ -19,6 +22,9 @@ class HomeController < ApplicationController
   def my_recipe
     @menus = Menu.all
     @menu = current_user.menus.sample
+    @ingredients = Ingredient.where(menu_id: @menu.id)
+    @preparations = Preparation.where(menu_id: @menu.id)
+    @n = 1
     if user_signed_in?
       @original_menus = current_user.menus
     end
