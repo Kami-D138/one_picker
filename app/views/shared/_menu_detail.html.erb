@@ -28,12 +28,9 @@
 
   <div class = "menu_preparation" >
     <p>作り方</p>
-      <% while @n <= @preparations.count %>
-        <% @preparations.each do |preparation|%>
-          <%= @n %>.
-          <%= preparation.step %></br>
-          <% @n += 1 %>
-        <% end %>
+      <% @preparations.each_with_index do |preparation, i|%>
+        <%= i + 1 %>.
+        <%= preparation.step %></br>
       <% end %>
     </div>
   </br>

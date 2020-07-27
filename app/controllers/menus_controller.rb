@@ -9,7 +9,6 @@ class MenusController < ApplicationController
     @menu = Menu.find_by(id: params[:id])
     @ingredients = Ingredient.where(menu_id: @menu.id)
     @preparations = Preparation.where(menu_id: @menu.id)
-    @n = 1
   end
 
   def new
