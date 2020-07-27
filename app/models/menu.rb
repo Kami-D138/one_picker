@@ -7,7 +7,7 @@ class Menu < ApplicationRecord
   belongs_to :genre
   belongs_to :type
   validates  :name,  presence: true
-  validates  :memo, length: {maximum: 150}
+  validates  :memo, length: {maximum: 300}
   validates  :user_id, presence: true
   mount_uploader :image, ImageUploader
 end

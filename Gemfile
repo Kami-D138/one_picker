@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails',                   '5.1.6'
 gem 'bcrypt',                  '3.1.12'
-gem 'faker',                   '1.7.3'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 gem 'mini_magick',             '4.7.0'
 gem 'will_paginate',           '3.1.6'
 gem 'bootstrap-will_paginate', '1.0.0'
