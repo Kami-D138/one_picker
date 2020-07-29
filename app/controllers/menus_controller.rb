@@ -61,8 +61,8 @@ class MenusController < ApplicationController
     if menu.destroy
       if current_user.id == menu.user_id || current_user.admin?  
         flash[:success] = "メニューを削除しました"
-        if current_user.admin == true
-          redirect_to admins_path
+        if current_user.admin?
+          redirect_to admin_path(menu.user_id)
         else
           redirect_to menus_path
         end
