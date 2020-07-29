@@ -1,14 +1,19 @@
 class MenusController < ApplicationController
   before_action :authenticate_user!
 
+
   def index
     @menus = current_user.menus.all
   end
 
   def show
     @menu = Menu.find_by(id: params[:id])
-    @ingredients = Ingredient.where(menu_id: @menu.id)
-    @preparations = Preparation.where(menu_id: @menu.id)
+    if current_user.admin? || current_user.id == @menu.user_id
+      @ingredients = Ingredient.where(menu_id: @menu.id)
+      @preparations = Preparation.where(menu_id: @menu.id)
+    else 
+      redirect_to '/'
+    end
   end
 
   def new
@@ -30,27 +35,43 @@ class MenusController < ApplicationController
   end
 
   def edit
-    @menu = current_user.menus.find_by(id: params[:id])
+    @menu = Menu.find_by(id: params[:id])
+    unless current_user.id == @menu.user_id 
+      redirect_to '/'
+    end
   end
 
   def update 
     @menu = Menu.find_by(id: params[:id])
-    if  @menu.update_attributes(menu_params)
-      flash[:success] = "編集しました。"
-      redirect_to menus_path
+    if current_user.id == @menu.user_id
+      if  @menu.update_attributes(menu_params)
+        flash[:success] = "編集しました。"
+        redirect_to menus_path
+      else 
+        flash.now[:danger] = "編集できませんでした。"
+        render 'edit'
+      end
     else 
-      flash.now[:danger] = "編集できませんでした。"
-      render 'edit'
+      redirect_to '/'
     end
   end 
 
   def destroy 
-    if Menu.find_by(id: params[:id]).destroy
-      flash[:success] = "メニューを削除しました"
-      redirect_to menus_path
+    menu = Menu.find_by(id: params[:id])
+    if menu.destroy
+      if current_user.id == menu.user_id || current_user.admin?  
+        flash[:success] = "メニューを削除しました"
+        if current_user.admin == true
+          redirect_to admins_path
+        else
+          redirect_to menus_path
+        end
+      else 
+        render 'index'
+        flash[:danger].now = "メニューの削除に失敗しました"
+      end
     else 
-      render 'index'
-      flash[:danger] = "メニューの削除に失敗しました"
+      redirect_to '/'
     end
   end 
 
@@ -60,4 +81,5 @@ class MenusController < ApplicationController
       params.require(:menu).permit(:name, :recipe, :memo, :status, 
             :user_id, :type_id, :genre_id, :image, ingredients_attributes: [:id, :item, :quantity, :_destroy], preparations_attributes: [:id, :step, :_destroy])
     end
+
 end

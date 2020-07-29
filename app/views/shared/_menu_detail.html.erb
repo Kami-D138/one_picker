@@ -35,13 +35,13 @@
     </div>
   </br>
 
-<% if @menu.memo.present?%>
-  <div class = "menu_memo" >
-    <p>お料理メモ</p>
-    <%= @menu.memo %>
-  </div>
-  </br>
-<% end %>
+  <% if @menu.memo.present?%>
+    <div class = "menu_memo" >
+      <p>お料理メモ</p>
+      <%= @menu.memo %>
+    </div>
+    </br>
+  <% end %>
 
   <div class = "menu_genre" >
     <p>料理ジャンル</p>

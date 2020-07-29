@@ -38,12 +38,12 @@
   </div>
 
   <div class="field"> 
-  <%= f.label :ジャンル1 %><br/>
+  <%= f.label :ジャンル%><br/>
   <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
 </div>
   
   <div class="field"> 
-    <%= f.label :ジャンル2%><br/>
+    <%= f.label :種別%><br/>
     <%= f.collection_select :type_id, Type.all, :id, :name, include_blank: "選択して下さい" %>
   </div>
 
@@ -55,4 +55,7 @@
   <div class="btn">
     <%= f.submit "編集", class: "btn btn-primary" %>
   </div>
+
+    <%= link_to "削除", menu_path(@menu.id), method: :delete,
+                                              data: {confirm: "削除してよろしいですか？"}, class: "btn btn-danger"%>
 <% end %>

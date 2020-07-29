@@ -6,6 +6,7 @@ class Menu < ApplicationRecord
   belongs_to :user
   belongs_to :genre
   belongs_to :type
+  default_scope -> { order(created_at: :desc) }
   validates  :name,  presence: true
   validates  :memo, length: {maximum: 300}
   validates  :user_id, presence: true

@@ -1,1 +1,5 @@
 <%= render "shared/menu_detail" %>
+
+<% if current_user.id == @menu.user_id || !current_user.admin? %>
+    <%= link_to "レシピを編集する", edit_menu_path(@menu.id)%>
+<% end %>

@@ -6,12 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-genres = ["日本料理","韓国料理","中華料理","フランス料理","イタリア料理","スペイン料理","その他"]
+genres = ["和食","洋食","中華料理","韓国朝鮮料理","エスニック料理","その他"]
 genres.each do |genre|
     Genre.create!(name: genre)
 end
 
-types = ["メイン","サイド","スープ","サラダ","デザート","その他"]
+types = ["ごはん・麺・パン","メイン","サイド","スープ","サラダ","デザート","その他"]
 types.each do |type|
     Type.create!(name: type)
 end
@@ -34,8 +34,8 @@ User.create!(name:  "sample",
 end
 
 users = User.all
-genre_num = (1..7).to_a
-type_num = (1..6).to_a
+genre_num = (1..6).to_a
+type_num = (1..7).to_a
 random_num = (1..10).to_a
 users.each do |user|
     20.times do
