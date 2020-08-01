@@ -9,7 +9,7 @@ class AdminsController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
-    @menus = @user.menus.all
+    @menus = @user.menus.paginate(page: params[:page], per_page: 10 )
   end
 
   def destroy 
@@ -18,14 +18,14 @@ class AdminsController < ApplicationController
       flash[:success] = "ユーザーを削除しました。"
       redirect_to admins_path
     else
-      render '/admins/index'
+      render admins_path
       flash[:danger].now = "ユーザーの削除に失敗しました。"
     end
   end
 
   private 
     def user_admin?
-      redirect_to '/' unless current_user.admin?
+      redirect_to root_path unless current_user.admin?
     end
 end
 

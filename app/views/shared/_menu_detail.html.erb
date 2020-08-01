@@ -1,4 +1,4 @@
-<div class = "menu_show">
+<div class = "menu_show container my-5">
 
   <% if @menu.image.present? %>
     <div class = "menu_image" >
@@ -6,15 +6,14 @@
     </div>
   <% end %>
 
-  <div class = "menu_name" >
+  <div class = "menu_name mt-3" >
     <h5>料理名</h5>
-    <%= @menu.name %>
+    <p>　　<%= @menu.name %></p>
   </div>
-  </br>
 
-  <div class = "menu_ingredient" >
-    <p>材料</p>
-      <% @ingredients.each do |ingredient|%>
+  <div class = "menu_ingredient mt-5" >
+    <h5>材料</h5>
+    <% @ingredients.each do |ingredient|%>
       <ul>
         <li>
           <%= ingredient.item %>
@@ -22,29 +21,27 @@
           <%= ingredient.quantity %></br>
         </li>
       </ul>
-      <% end %>
-    </div>
-  </br>
+    <% end %>
+  </div>
+  
 
-  <div class = "menu_preparation" >
-    <p>作り方</p>
+  <div class = "menu_preparation mt-5" >
+    <h5>作り方</h5>
       <% @preparations.each_with_index do |preparation, i|%>
-        <%= i + 1 %>.
-        <%= preparation.step %></br>
+       <p>　  <%= i + 1 %>.
+        <%= preparation.step %></p>
       <% end %>
-    </div>
-  </br>
+  </div>
 
   <% if @menu.memo.present?%>
-    <div class = "menu_memo" >
-      <p>お料理メモ</p>
-      <%= @menu.memo %>
+    <div class = "menu_memo mt-5" >
+      <h5>お料理メモ</h5>
+      <p>　　<%= @menu.memo %></p>
     </div>
-    </br>
   <% end %>
 
-  <div class = "menu_genre" >
-    <p>料理ジャンル</p>
-    <%= @menu.genre.name %>の<%= @menu.type.name %>
+  <div class = "menu_genre mt-5" >
+    <h5>料理ジャンル</h5>
+    <p>　　<%= @menu.genre.name %>の<%= @menu.type.name %></p>
   </div>
 </div>

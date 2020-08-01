@@ -1,9 +1,8 @@
 class MenusController < ApplicationController
   before_action :authenticate_user!
 
-
   def index
-    @menus = current_user.menus.all
+    @menus = current_user.menus.paginate(page: params[:page], per_page: 10 )
   end
 
   def show
@@ -12,7 +11,7 @@ class MenusController < ApplicationController
       @ingredients = Ingredient.where(menu_id: @menu.id)
       @preparations = Preparation.where(menu_id: @menu.id)
     else 
-      redirect_to '/'
+      redirect_to root_path
     end
   end
 
@@ -30,14 +29,14 @@ class MenusController < ApplicationController
       redirect_to menus_path
     else 
       flash.now[:danger] = "投稿できませんでした。"
-      render 'new'
+      render new_menu_path
     end
   end
 
   def edit
     @menu = Menu.find_by(id: params[:id])
     unless current_user.id == @menu.user_id 
-      redirect_to '/'
+      redirect_to root_path
     end
   end
 
@@ -49,10 +48,10 @@ class MenusController < ApplicationController
         redirect_to menus_path
       else 
         flash.now[:danger] = "編集できませんでした。"
-        render 'edit'
+        render edit_menu_path
       end
     else 
-      redirect_to '/'
+      redirect_to root_path
     end
   end 
 
@@ -71,7 +70,7 @@ class MenusController < ApplicationController
         flash[:danger].now = "メニューの削除に失敗しました"
       end
     else 
-      redirect_to '/'
+      redirect_to root_path
     end
   end 
 

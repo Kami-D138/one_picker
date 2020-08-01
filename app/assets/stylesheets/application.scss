@@ -1,8 +1,11 @@
-.error_messages{
-    color: tomato;
-}
-
-.menu_pic{
-    height: 100px; 
-    width:  100px;
-}
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+ 
+ .error_messages{
+     color: tomato;
+ }
+ 
+ .menu_pic{
+     height: 100px; 
+     width:  100px;
+ }

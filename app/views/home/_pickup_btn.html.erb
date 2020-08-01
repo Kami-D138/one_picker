@@ -1,10 +1,12 @@
-<%= link_to "Pick Up", "/home/common_recipe", class: "btn btn-outline-success" %>
-  <p> From <%= @menus.count %> Recipes</p>
-</br>
-
-<% if user_signed_in?%>
-  <%= link_to "Pick Up", "/home/my_recipe", class: "btn btn-outline-danger" %>
-  <p>From My <%= @original_menus.count %> Recipes</p>
+<div class ="container">
+  <%= link_to "Pick Up", home_common_recipe_path, class: "btn btn-outline-success" %>
+    <p> From <%= @menus.count %> Recipes</p>
   </br>
-  <%= link_to "レシピ投稿", "/menus/new", class: "btn btn-outline-info" %>
-<% end %> 
+
+  <% if user_signed_in?%>
+    <%= link_to "Pick Up", home_my_recipe_path, class: "btn btn-outline-danger" %>
+    <p>From My <%= @original_menus.count %> Recipes</p>
+    </br>
+    <%= link_to "レシピ投稿", new_menu_path, class: "btn btn-outline-info" %>
+  <% end %> 
+</div>

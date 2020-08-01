@@ -1,8 +1,13 @@
-<% @users.each do |user|%>
-    <p><%= link_to user.name, admin_path(user.id) %>
-        <% unless user.admin == true && !current_user = false %>
-             ｜<%= link_to "削除", admin_path(user.id), method: :delete,
-                                                    data: {confirm: "ユーザーを削除しますか？"} %>
-        <% end %>
-    </p>
-<% end %>
+<div class = "container">
+    <div class = "row">
+        <div class = col-offset>
+    <% @users.each do |user|%>
+        <p>
+            <%= link_to user.name, admin_path(user.id) %>
+            <% unless user.admin == true && !current_user = false %>
+                ｜<%= link_to "削除", admin_path(user.id), method: :delete,
+                                                        data: {confirm: "ユーザーを削除しますか？"} %>
+            <% end %> 
+        </p>
+    <% end %>
+</div>
