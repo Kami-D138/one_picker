@@ -1,57 +1,62 @@
-<div class = "container mx-auto" style = "width: 200;">
-  <%= form_for(@menu) do |f| %>
-    <%= render "shared/error_messages", object: f.object %>
-      <div class="field mt-5">
-        <h5><%= f.label :料理名 %></h5>
-        <%= f.text_field :name, autofocus: true, placeholder: "例) ハンバーグ" %>
-      </div>
+<%= form_for(@menu) do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <div class = "container col-10 mx-auto">
+    <div class="menu_name_form form-group mt-5">
+        <h3><%= f.label :料理名, class:"mr-0" %></h3>
+        <%= f.text_field :name, autofocus: true, placeholder: "例) ハンバーグ", class: "form-control col-6"%>
+    </div>
 
-      <div class="ingredient mt-4">
-        <h5>材料</h5>
-        <%= f.fields_for :ingredients do |ingredient| %>
-          <div class="field">
-            <%= render "shared/ingredient_fields", f: ingredient%>
-              <div class="links">
-                <%= link_to_add_association "材料追加", f , :ingredients, partial: 'shared/ingredient_fields' %>
-              </div>
-          </div>
-        <% end %>
-      </div>
-      
-      <div class="step mt-4">
-        <h5>調理方法</h5>
-        <%= f.fields_for :preparations do |preparation| %>
-          <div class="field">
-            <%= render "shared/preparation_fields", f: preparation %>
-              <div class="links">
-                <%= link_to_add_association "手順追加", f , :preparations, partial: 'shared/preparation_fields' %>
-              </div>
-          </div>
-        <% end %>
-      </div>
+    <div class="ingredient form-group mt-4">
+      <h3>材料</h3>
+      <%= f.fields_for :ingredients do |ingredient| %>
+        <div class="ingredient_form">
+          <%= render "shared/ingredient_fields", f: ingredient%>
+            <div class="links">
+              <%= link_to_add_association "材料追加", f , :ingredients, partial: 'shared/ingredient_fields'%>
+            </div>
+        </div>
+      <% end %>
+    </div>
+    
+    <div class="step form-group mt-4">
+      <h3>調理方法</h3>
+      <%= f.fields_for :preparations do |preparation| %>
+        <div class="step_form">
+          <%= render "shared/preparation_fields", f: preparation %>
+            <div class="links">
+              <%= link_to_add_association "手順追加", f , :preparations, partial: 'shared/preparation_fields'%>
+            </div>
+        </div>
+      <% end %>
+    </div>
 
-      <div class="field mt-4">
-        <h5><%= f.label :ひとこと %></h5>
-        <%= f.text_field :memo %>
-      </div>
-
-      <div class="field mt-4"> 
+    <div class = "form-row">
+      <div class = "genre form-group mt-4 col-3">
         <h5><%= f.label :ジャンル%></h5>
-        <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
+        <%= f.collection_select(:genre_id, Genre.all, :id, :name, {:prompt=>true}, {class: "form-control"})%>
       </div>
-      
-      <div class="field mt-4"> 
+      <div class = "type form-group mt-4 col-3"> 
         <h5><%= f.label :種別%></h5>
-        <%= f.collection_select :type_id, Type.all, :id, :name, include_blank: "選択して下さい" %>
+        <%= f.collection_select(:type_id, Type.all, :id, :name, {:prompt=>true}, {class: "form-control"})%>
       </div>
+    </div>
 
-      <div class="field mt-4"> 
-        <h5><%= f.label :画像 %></h5>
-        <%= f.file_field :image %>
+    <div class="memo form-group mt-4">
+      <h5><%= f.label :コメント %></h5>
+      <div class = "memo_form">
+        <%= f.text_field :memo, class: "form-control col-6" %>
       </div>
+    </div>
 
-      <div class="btn">
-        <%= f.submit "投稿", class: "btn btn-primary" %>
+    <div class="image mt-4"> 
+      <h5><%= f.label :画像 %></h5>
+      <div class = "image_form">
+        <%= f.file_field :image%>
       </div>
-  <% end %>
-</div>
+    </div>
+
+    <div class="form_btn mt-5 row">
+      <%= f.submit "投稿", class: "btn btn-primary col-3" %>
+    </div>
+  </div>
+<% end %>
