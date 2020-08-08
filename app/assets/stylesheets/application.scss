@@ -9,6 +9,27 @@
      height: 100px; 
      width:  100px;
  }
- .form_btn{
-     margin-left: 80px;
- }
+
+ .field_with_errors {
+    display: contents;
+    // // もしくは 
+    // display: inline;
+  }
+
+ 
+  .login_form{
+    margin-top: 120px;
+    max-width: 600px;
+    height: 360px;
+    border: 1px solid #9C9C9C;
+    background-color: #EAEAEA;
+  }
+  .login_text {
+    padding: 20px;
+  }
+  #register-link {
+    margin-top: -85px;
+    .devise_link{
+        color: #17a2b8;
+    }
+}

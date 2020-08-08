@@ -47,8 +47,8 @@ class MenusController < ApplicationController
         flash[:success] = "編集しました。"
         redirect_to menus_path
       else 
-        flash.now[:danger] = "編集できませんでした。"
-        render edit_menu_path
+        flash[:danger] = "編集できませんでした。"
+        redirect_to edit_menu_path
       end
     else 
       redirect_to root_path
