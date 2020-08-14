@@ -2,7 +2,7 @@ class MenusController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @menus = current_user.menus.paginate(page: params[:page], per_page: 10 )
+    @menus = current_user.menus.page(params[:page]).per(10)
   end
 
   def show
@@ -25,7 +25,7 @@ class MenusController < ApplicationController
     @menu = current_user.menus.build(menu_params)
     
     if @menu.save
-      flash[:success] = "投稿しました。"
+      flash[:primary] = "投稿しました。"
       redirect_to menus_path
     else 
       flash.now[:danger] = "投稿できませんでした。"
@@ -44,7 +44,7 @@ class MenusController < ApplicationController
     @menu = Menu.find_by(id: params[:id])
     if current_user.id == @menu.user_id
       if  @menu.update_attributes(menu_params)
-        flash[:success] = "編集しました。"
+        flash[:primary] = "編集しました。"
         redirect_to menus_path
       else 
         flash[:danger] = "編集できませんでした。"
@@ -59,7 +59,7 @@ class MenusController < ApplicationController
     menu = Menu.find_by(id: params[:id])
     if menu.destroy
       if current_user.id == menu.user_id || current_user.admin?  
-        flash[:success] = "メニューを削除しました"
+        flash[:primary] = "メニューを削除しました"
         if current_user.admin?
           redirect_to admin_path(menu.user_id)
         else

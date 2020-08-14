@@ -9,7 +9,7 @@ class AdminsController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
-    @menus = @user.menus.paginate(page: params[:page], per_page: 10 )
+    @menus = @user.menus.page(params[:page]).per(10)
   end
 
   def destroy 

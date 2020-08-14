@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/faker-ruby/faker.git
-  revision: 66e6113c29438e70bcc6a031971efe60ae06b71f
+  revision: aaed3cdd353956deb6f4051b27e7bb4601890d4e
   branch: master
   specs:
     faker (2.13.0)
@@ -54,19 +54,17 @@ GEM
       rest-client (~> 2.0)
     ansi (1.5.0)
     arel (8.0.0)
-    autoprefixer-rails (9.8.5)
+    autoprefixer-rails (9.8.6.1)
       execjs
     bcrypt (3.1.12)
     bindex (0.8.1)
-    bootstrap (4.5.0)
+    bootstrap (4.5.2)
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 1.14.3, < 2)
       sassc-rails (>= 2.0.0)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
-    bootstrap-will_paginate (1.0.0)
-      will_paginate
     builder (3.2.4)
     byebug (9.0.6)
     carrierwave (2.1.0)
@@ -85,7 +83,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.6)
+    concurrent-ruby (1.1.7)
     crass (1.0.6)
     devise (4.7.2)
       bcrypt (~> 3.0)
@@ -140,7 +138,7 @@ GEM
       fog-xml (~> 0.1.1)
       ipaddress (~> 0.5)
       json (~> 2.0)
-    fog-aliyun (0.3.17)
+    fog-aliyun (0.3.18)
       aliyun-sdk (~> 0.7.3)
       fog-core
       fog-json
@@ -295,6 +293,18 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (2.3.1)
+    kaminari (1.2.1)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.1)
+      kaminari-activerecord (= 1.2.1)
+      kaminari-core (= 1.2.1)
+    kaminari-actionview (1.2.1)
+      actionview
+      kaminari-core (= 1.2.1)
+    kaminari-activerecord (1.2.1)
+      activerecord
+      kaminari-core (= 1.2.1)
+    kaminari-core (1.2.1)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -302,7 +312,7 @@ GEM
     loofah (2.6.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    lumberjack (1.2.6)
+    lumberjack (1.2.7)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     method_source (1.0.0)
@@ -455,7 +465,6 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    will_paginate (3.1.6)
     xml-simple (1.1.5)
     xmlrpc (0.3.0)
 
@@ -466,7 +475,6 @@ DEPENDENCIES
   bcrypt (= 3.1.12)
   bootstrap (~> 4.5.0)
   bootstrap-sass (= 3.3.7)
-  bootstrap-will_paginate (= 1.0.0)
   byebug (= 9.0.6)
   carrierwave
   cocoon
@@ -481,6 +489,7 @@ DEPENDENCIES
   guard-minitest (= 2.4.6)
   jbuilder (= 2.7.0)
   jquery-rails (= 4.3.1)
+  kaminari
   listen (= 3.1.5)
   mini_magick (= 4.7.0)
   minitest (= 5.10.3)
@@ -500,7 +509,6 @@ DEPENDENCIES
   tzinfo-data
   uglifier (= 3.2.0)
   web-console (= 3.5.1)
-  will_paginate (= 3.1.6)
 
 BUNDLED WITH
    2.1.4

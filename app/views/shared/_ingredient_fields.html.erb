@@ -6,5 +6,5 @@
         <%= f.text_field :quantity, placeholder: "例) 250g", class: "form-control" %>
     </div>
     <%= f.hidden_field :menu_id, :value => @menu.id %>
-    <%= link_to_remove_association "削除", f, class:" btn btn-danger col-1" %>
+    <%= link_to_remove_association "", f, class:"fas fa-times col-1 text-danger" %>
 </div>

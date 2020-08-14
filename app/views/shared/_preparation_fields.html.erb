@@ -1,5 +1,5 @@
-<div class="nested-fields">
-    <%= f.text_area :step, placeholder: "例) 玉ねぎをみじん切りにし、フライパンで炒める。※レンジで4〜５分でもOK!", class: "form-control", rows: "3" %>
+<div class="nested-fields form-row">
+    <%= f.text_area :step, placeholder: "例) 玉ねぎをみじん切りにし、フライパンで炒める。※レンジで4〜５分でもOK!", class: "form-control col-11", rows: "4" %>
     <%= f.hidden_field :menu_id, :value => @menu.id %>
-    <%= link_to_remove_association "削除", f %>
+    <%= link_to_remove_association "", f, class:"fas fa-times col-1 text-danger" %>
 </div>

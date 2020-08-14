@@ -6,7 +6,7 @@
             <%= link_to user.name, admin_path(user.id) %>
             <% unless user.admin == true && !current_user = false %>
                 ｜<%= link_to "削除", admin_path(user.id), method: :delete,
-                                                        data: {confirm: "ユーザーを削除しますか？"} %>
+                                                        data: {confirm: "ユーザーを削除しますか？"}, class:"text-danger"%>
             <% end %> 
         </p>
     <% end %>

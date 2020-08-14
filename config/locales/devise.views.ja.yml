@@ -1,4 +1,11 @@
 ja:
+  views:
+     pagination:
+      first: <i class="fas fa-angle-double-left"></i>
+      last: <i class="fas fa-angle-double-right"></i>
+      previous: <i class="fas fa-angle-left"></i>
+      next: <i class="fas fa-angle-right"></i>
+      truncate: "..."
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
@@ -35,11 +42,16 @@ ja:
               required: "を選択してください"
     attributes:
       user:
+        name: "ニックネーム"
         current_password: "現在のパスワード"
         email: "メールアドレス"
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "ログインを記憶"
+      menu:
+        name: "料理名"
+        type: "種別"
+        genre: "ジャンル"
     models:
       user: "ユーザ"
   devise:

@@ -16,7 +16,9 @@
     // display: inline;
   }
 
- 
+
+  // login-form
+
   .login_form{
     margin-top: 120px;
     max-width: 600px;
@@ -33,3 +35,60 @@
         color: #17a2b8;
     }
 }
+
+//registration_form
+
+.registration_form{
+  margin-top: 120px;
+  max-width: 600px;
+  height: 550px;
+  border: 1px solid #9C9C9C;
+  background-color: #EAEAEA;
+}
+.registration_text {
+  padding: 20px;
+}
+
+#login-link {
+  p{
+    margin-bottom: -5px;
+  }
+  .devise_link{
+      color: #17a2b8;
+  }
+}
+
+// ページネーション
+.pagination{
+  margin-left: 30px;
+  li{
+    .page-link {
+      border: none;     /*枠線をなくす*/
+      color: #696969;   /*文字の色を変える*/
+    }
+  }
+  .active{ //表示しているページ
+    .page-link {     
+      background: #93c9ff;     /*背景の色を変える*/
+      border-radius: 20px;     /*角を丸くする*/
+    }
+  }
+  li{
+    .page-link:hover {        
+      border-radius: 30px;    /*角を丸くする*/
+    }
+  }
+}
+
+.new-recipe-btn{
+  margin-top: 125px;
+}
+
+//menu-index
+.menu-body{
+  p{
+    margin-bottom: 0px;
+    font-size: 10px;
+  }
+}
+
