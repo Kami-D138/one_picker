@@ -29,7 +29,8 @@
             </li>
             <li class="nav-item ml-auto">
               <span class ="nav-link">
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete,
+                                                    data: {confirm: "ログアウトしますか？"} %>
               </span>
             </li>
             <% if current_user.admin == true %>

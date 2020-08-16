@@ -15,7 +15,7 @@ class AdminsController < ApplicationController
   def destroy 
     user = User.find_by(id: params[:id])
     if user.destroy 
-      flash[:success] = "ユーザーを削除しました。"
+      flash[:primary] = "ユーザーを削除しました。"
       redirect_to admins_path
     else
       render admins_path

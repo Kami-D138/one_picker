@@ -1,18 +1,22 @@
-<div class = "container">
+<div class = " top-page container">
     <div class = "row">
-        <div class = "col-3 my-5">
-            <%= render "home/pickup_btn"%>
+        <div class = "col-2  border-right" style="padding: 0;">
+            <div class = "pickup-btns">
+                <%= render "home/pickup_btn"%>
+            </div>
         </div>
-        <div class="jumbotron col-7 my-5">
-            <h1 class="display-5">P!CK-APP</h1>
-            <p class="lead">あなたの『今日何作ろう？』をお手伝い。</br>
-                PickUpボタンでランダムにレシピをピックアップします！</p>
-            <hr class="my-4">
-            <p>毎日毎晩の献立を考えるのは時間のかかること。</br>
-                全投稿の中から今日のあなたの献立候補を表示します。</br>
-                もしかしたら、あなたの新しい得意な料理のレパートリーも増えるかも?</p>
-            <%= link_to "Pick Up", home_common_recipe_path, class: "btn btn-outline-success" %>
-            <h5> From <%= @menus.count %> Recipes</h5>
+        <div class = "col-10">
+            <div class="jumbotron col-8 mt-5 ml-5">
+                <h1 class="display-5">P!CK-APP</h1>
+                <p class="lead">あなたの『今日何作ろう？』をお手伝い。</br>
+                    PickUpボタンでランダムにレシピをピックアップします！</p>
+                <hr class="mt-4">
+                <p>毎日毎晩の献立を考えるのは時間のかかること。</br>
+                    全投稿の中から今日のあなたの献立候補を表示します。</br>
+                    もしかしたら、あなたの新しい得意な料理のレパートリーも増えるかも?</p>
+                <%= link_to "Pick Up", home_common_recipe_path, class: "btn btn-outline-success" %>
+                <h5> From <%= @menus.count %> Recipes</h5>
+            </div>
         </div>
     </div>
 </div>
