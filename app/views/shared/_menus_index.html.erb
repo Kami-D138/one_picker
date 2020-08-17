@@ -14,30 +14,33 @@
         <div class = "menu-contents">
           <% @menus.each do |menu| %>
             <ol id = "menu-<%= menu.id %>" class="shadow p-3 mb-5 bg-white rounded">
-            <div class= "menu-body">
-              <div class=  "menu_name">
-                <h5><%= link_to menu.name, menu_path(menu.id), class:"text-dark" %></h5>
-              </div> 
-              <div class = "row">
-                <% if menu.image.present? %>
-                  <%= image_tag menu.image.to_s, class:"menu_pic col-2" %>
-                <% end %>
-                <div class = "menu_ingredient col-8">
-                  <p class= "text-secondary">材料:</p>
-                  <% @ingredients = Ingredient.where(menu_id: menu.id)%>
-                  <% @ingredients.each do |ingredient|%>
-                    <%= link_to ingredient.item, menu_path(menu.id), class:"text-dark" %> 
-                  <% end %>
-                </div></br>
+              <div class= "menu-body">
+                <div class=  "menu_name">
+                  <h5><%= link_to menu.name, menu_path(menu.id), class:"text-dark" %></h5>
+                </div> 
+                <div class = "row">
+                  <div class = "col-3">
+                    <% if menu.image.present? %>
+                      <%= image_tag menu.image.to_s, class:"index_pic" %>
+                    <% end %>
+                  </div>
+                  <div class = "menu_ingredient col-8">
+                    <p class= "text-secondary">材料:</p>
+                    <% @ingredients = Ingredient.where(menu_id: menu.id)%>
+                    <% @ingredients.each do |ingredient|%>
+                      <%= link_to ingredient.item, menu_path(menu.id), class:"text-dark" %></br>
+                    <% end %>
+                  </div>
+                </div>
+                <div class = "menu-info text-right">
+                  <span class = "timestamp">
+                        <%= l menu.created_at, format: :short %>
+                  </span>
+                  <%= link_to "編集", edit_menu_path(menu.id)%>
+                  <%= link_to "削除", menu_path(menu.id), method: :delete,
+                                                               data: {confirm: "削除してよろしいですか？"}, class:"text-danger"%>
+                </div>
               </div>
-            </div>
-              <span class = "timestamp">
-                <%= l menu.created_at, format: :short %>
-              </span>
-              <%= link_to "編集", edit_menu_path(menu.id)%>
-
-              <%= link_to "削除", menu_path(menu.id), method: :delete,
-                                                      data: {confirm: "削除してよろしいですか？"}, class:"text-danger"%>
             </ol>
           <% end %>
         </div> 
