@@ -1,18 +1,16 @@
 <div class = "container">
-   <div class = "row">
-        <div class = "col-2  border-right" style="padding: 0;">
-            <div class= "edit-btns">
-                <% if current_user.id == @menu.user_id || !current_user.admin?%>
-                    <p><%= link_to "レシピ編集", edit_menu_path(@menu.id), class: "btn btn-primary"%></p></br>
-                <% end %>
-                <p><%= link_to "レシピ削除", menu_path(@menu.id), method: :delete,
-                                                data: {confirm: "削除してよろしいですか？"}, class: "btn btn-danger"%></p>
-            </div>
-        </div>
-    <div class="col-8 shadow p-3 my-5 bg-white rounded  justify-content-center align-items-center ml-5">
-            <div class="col-12 menu_show">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-8 shadow-sm p-3 my-5 bg-white rounded">
+            <div class="col-md-12 menu_show">
                 <%= render "shared/menu_detail" %>
             </div>
-        </div>
+            <div class="btns mt-5 text-center">
+                <% if current_user.id == @menu.user_id || !current_user.admin?%>
+                    <%= link_to "編集", edit_menu_path(@menu.id), class: "btn btn-primary mr-5 col-2"%>
+                <% end %>
+                <%= link_to "削除", menu_path(@menu.id), method: :delete,
+                                    data: {confirm: "削除してよろしいですか？"}, class: "btn btn-danger ml-5"%>
+            </div>
+        </div>  
     </div>
 </div>

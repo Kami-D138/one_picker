@@ -13,7 +13,6 @@ class HomeController < ApplicationController
     @menu = Menu.all.sample
     @ingredients = Ingredient.where(menu_id: @menu.id)
     @preparations = Preparation.where(menu_id: @menu.id)
-    @n = 1
     if user_signed_in?
       @original_menus = current_user.menus
     end
@@ -24,7 +23,6 @@ class HomeController < ApplicationController
     @menu = current_user.menus.sample
     @ingredients = Ingredient.where(menu_id: @menu.id)
     @preparations = Preparation.where(menu_id: @menu.id)
-    @n = 1
     if user_signed_in?
       @original_menus = current_user.menus
     end

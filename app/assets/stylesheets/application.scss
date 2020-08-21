@@ -7,7 +7,7 @@
  
  .index_pic{
      height: auto; 
-     width:  100% ;
+     width: 100% ;
  }
 
  .menu_image{
@@ -34,7 +34,7 @@
   .login_text {
     padding: 20px;
   }
-  #register-link {
+  #login-link {
     margin-top: -85px;
     .devise_link{
         color: #17a2b8;
@@ -46,7 +46,7 @@
 .registration_form{
   margin-top: 120px;
   max-width: 600px;
-  height: 550px;
+  height: auto;
   border: 1px solid #9C9C9C;
   background-color: #EAEAEA;
 }
@@ -54,7 +54,8 @@
   padding: 20px;
 }
 
-#login-link {
+#regiform-link {
+  padding-bottom: 20px;
   p{
     margin-bottom: -5px;
   }
@@ -63,40 +64,50 @@
   }
 }
 
+//password-reset
+.reset_form{
+  margin-top: 120px;
+  max-width: 600px;
+  height: auto;
+  border: 1px solid #9C9C9C;
+  background-color: #EAEAEA;
+}
+
+.reset_text{
+  padding: 20px;
+}
+
+#reset-link{
+  margin-top: 30px;
+  padding-bottom: 20px;
+  .devise_link{
+      color: #17a2b8;
+  }
+}
+
 // ページネーション
 .pagination{
-  margin-left: 30px;
   li{
     .page-link {
+      background: #f8f9fa;
       border: none;     /*枠線をなくす*/
-      color: #696969;   /*文字の色を変える*/
+      color: #353131;   /*文字の色を変える*/
+      margin-right:5px;
+      margin-left:5px;
     }
   }
   .active{ //表示しているページ
     .page-link {     
       background: #93c9ff;     /*背景の色を変える*/
-      border-radius: 20px;     /*角を丸くする*/
+      border-radius: 30px;     /*角を丸くする*/
     }
   }
   li{
     .page-link:hover {        
       border-radius: 30px;    /*角を丸くする*/
+      background:#b8babb;
     }
   }
-}
-
-.new-recipe-btn{
-  margin-top: 200px;
-}
-
-//a group of pickup btns and new recipe btn
-.pickup-btns{
-  margin-top: 100px;
-}
-
-//a group of edit btn and delet btn
-.edit-btns{
-  margin-top: 100px;
 }
 
 //menu-index
@@ -109,7 +120,35 @@
 
 //top-page
 .top-page{
-  height: max;
+  padding-top: 100px;
 }
 
+//pickup-btns
+// .pickup-btns{
+//   height: auto;
+// }
 
+//navbar
+.header-nav{
+  background-color: #ffc107f5;
+}
+
+.wrapper{
+  min-height: 100vh;
+  position: relative;/*←相対位置*/
+  padding-bottom: 300px;/*←footerの高さ*/
+  box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+}
+footer{
+  width: 100%;
+  color: #fff;
+  background-color: #ffc107f5;
+  position: absolute;/*←絶対位置*/
+  bottom: 0; /*下に固定*/
+}
+
+//wealcome-page
+.meal{
+  height: 50vh;
+  width: 100%;
+}

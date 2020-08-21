@@ -1,21 +1,21 @@
 <div class = "container mt-5"> 
   <div class="row justify-content-center align-items-center">
-    <div class="col-md-6 login_form ">
+    <div class="col-md-6 reset_form">
       <div class="col-md-12">
-          <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <h3 class="reset_text text-center text-info">パスワードの再設定</h3>
           <%= render "shared/error_messages", object: f.object %>
-          <h3 class="password_text text-center text-info">パスワードの再設定</h3>
           <div class="form-group">
-            <%= f.label :email %></br>
+            <%= f.label :email, class:"text-info"%></br>
             <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
           </div>
           <div class="actions">
-            <%= f.submit "設定方法を送信" %>
-          </div>
-          <div id="register-link" class="text-right">
-            <%= render "users/shared/links" %>
+            <%= f.submit "メールを送る", class: "btn btn-info btn-md" %>
           </div>
         <% end %>
+        <div id="reset-link" class="text-right">
+          <%= render "users/shared/links" %>
+        </div>
       </div>
     </div>
   </div>

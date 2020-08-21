@@ -3,7 +3,7 @@ class AdminsController < ApplicationController
   before_action :user_admin?
 
   def index
-    @users = User.all
+    @users = User.all.page(params[:page]).per(20)
     @user = User.find_by(id: params[:id])
   end
 

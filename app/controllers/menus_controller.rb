@@ -77,8 +77,9 @@ class MenusController < ApplicationController
   private 
 
     def menu_params
-      params.require(:menu).permit(:name, :recipe, :memo, :status, 
-            :user_id, :type_id, :genre_id, :image, ingredients_attributes: [:id, :item, :quantity, :_destroy], preparations_attributes: [:id, :step, :_destroy])
+      params.require(:menu).permit(:id, :name, :recipe, :memo, :status, 
+            :user_id, :type_id, :genre_id, :image, ingredients_attributes: [:id, :menu_id, :item, :quantity, :_destroy],
+               preparations_attributes: [:id, :menu_id, :step, :_destroy])
     end
 
 end
