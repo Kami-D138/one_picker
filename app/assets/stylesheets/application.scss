@@ -85,6 +85,11 @@
   }
 }
 
+//user_page
+.userinfo_text{
+  padding-top: 20px;
+}
+
 // ページネーション
 .pagination{
   li{
@@ -97,13 +102,13 @@
     }
   }
   .active{ //表示しているページ
-    .page-link {     
+    .page-link {
       background: #93c9ff;     /*背景の色を変える*/
       border-radius: 30px;     /*角を丸くする*/
     }
   }
   li{
-    .page-link:hover {        
+    .page-link:hover {
       border-radius: 30px;    /*角を丸くする*/
       background:#b8babb;
     }

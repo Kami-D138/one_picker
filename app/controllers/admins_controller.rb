@@ -12,9 +12,9 @@ class AdminsController < ApplicationController
     @menus = @user.menus.page(params[:page]).per(10)
   end
 
-  def destroy 
+  def destroy
     user = User.find_by(id: params[:id])
-    if user.destroy 
+    if user.destroy
       flash[:primary] = "ユーザーを削除しました。"
       redirect_to admins_path
     else
@@ -23,7 +23,7 @@ class AdminsController < ApplicationController
     end
   end
 
-  private 
+  private
     def user_admin?
       redirect_to root_path unless current_user.admin?
     end

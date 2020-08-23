@@ -1,0 +1,22 @@
+<div class = "container mt-5">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-6 registration_form">
+            <div class="col-md-12">
+                <h3 class="userinfo_text text-center text-info">アカウント情報</h3>
+                <div class = "container">
+                    <div class = "user-name row my-5">
+                        <h5 class = "text-info col-md-6">ユーザー名:</h5>
+                        <%= link_to @user.name, edit_user_path, class: "text-dark col-md-6" %>
+                    </div>
+                    <div class = "user-email row my-5">
+                        <h5 class = "text-info col-md-6">メールアドレス:</h5>
+                        <%= link_to @user.email, edit_user_path, class: "text-dark col-md-6" %>
+                    </div>
+                    <div class = "setting-btn text-center mb-4">
+                        <%= link_to "アカウント情報変更", edit_user_path,  class: "btn btn-outline-primary"%>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -3,8 +3,8 @@
     <div class="col-10">
       <div class="col-12">
         <div class = "row justify-content-between mt-5">
-          <h1 class= "col-6 offset-2 text-center">得意料理一覧</h1>
-          <div class = "new-recipe-btn col-4 text-right">
+          <h1 class= "col-md-6 offset-md-2 text-center">得意料理一覧</h1></br>
+          <div class = "new-recipe-btn col-md-4 text-right">
             <%= link_to "レシピ投稿", new_menu_path, class: "btn btn-outline-info" %>
           </div>
         </div>
@@ -15,7 +15,7 @@
                 <div class= "menu-body">
                   <div class=  "menu_name">
                     <h5><%= link_to menu.name, menu_path(menu.id), class:"text-dark" %></h5>
-                  </div> 
+                  </div>
                   <div class = "row">
                     <div class = "col-3">
                       <% if menu.image.present? %>
@@ -26,7 +26,9 @@
                       <p class= "text-secondary">材料:</p>
                       <% @ingredients = Ingredient.where(menu_id: menu.id)%>
                       <% @ingredients.each do |ingredient|%>
-                        <%= link_to ingredient.item, menu_path(menu.id), class:"text-dark" %></br>
+                        <%= link_to ingredient.item, menu_path(menu.id), class:"text-dark" %>
+                                 ・・・
+                        <%= link_to ingredient.quantity, menu_path(menu.id), class:"text-dark" %></br>
                       <% end %>
                     </div>
                   </div>
@@ -41,7 +43,7 @@
                 </div>
               </ol>
             <% end %>
-          </div> 
+          </div>
         <%= paginate @menus %>
       </div>
     </div>

@@ -57,7 +57,7 @@ users.each do |user|
             menu.ingredients.create!(item: item, quantity: quantity)
         end
 
-        random_num.sample.times do 
+        random_num.sample.times do
             step  = Faker::Verb.ing_form
             menu.preparations.create!(step: step)
         end
