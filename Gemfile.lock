@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/faker-ruby/faker.git
-  revision: 66e6113c29438e70bcc6a031971efe60ae06b71f
+  revision: 35ec5ed4e8a7f7477a6583a8de9a70256d4192a2
   branch: master
   specs:
     faker (2.13.0)
@@ -49,16 +49,16 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
-    aliyun-sdk (0.7.3)
+    aliyun-sdk (0.8.0)
       nokogiri (~> 1.6)
       rest-client (~> 2.0)
     ansi (1.5.0)
     arel (8.0.0)
-    autoprefixer-rails (9.8.5)
+    autoprefixer-rails (9.8.6.2)
       execjs
     bcrypt (3.1.12)
     bindex (0.8.1)
-    bootstrap (4.5.0)
+    bootstrap (4.5.2)
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 1.14.3, < 2)
       sassc-rails (>= 2.0.0)
@@ -85,7 +85,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.6)
+    concurrent-ruby (1.1.7)
     crass (1.0.6)
     devise (4.7.2)
       bcrypt (~> 3.0)
@@ -93,7 +93,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.9.1)
+    devise-i18n (1.9.2)
       devise (>= 4.7.1)
     devise-i18n-views (0.3.7)
     domain_name (0.5.20190701)
@@ -140,8 +140,8 @@ GEM
       fog-xml (~> 0.1.1)
       ipaddress (~> 0.5)
       json (~> 2.0)
-    fog-aliyun (0.3.17)
-      aliyun-sdk (~> 0.7.3)
+    fog-aliyun (0.3.19)
+      aliyun-sdk (~> 0.8.0)
       fog-core
       fog-json
       ipaddress (~> 0.8)
@@ -265,6 +265,7 @@ GEM
     formatador (0.2.5)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    google-analytics-rails (1.1.1)
     guard (2.14.1)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -302,7 +303,7 @@ GEM
     loofah (2.6.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    lumberjack (1.2.6)
+    lumberjack (1.2.7)
     mail (2.7.1)
       mini_mime (>= 0.1.1)
     method_source (1.0.0)
@@ -477,6 +478,7 @@ DEPENDENCIES
   faker!
   fog (= 1.42)
   font-awesome-rails
+  google-analytics-rails
   guard (= 2.14.1)
   guard-minitest (= 2.4.6)
   jbuilder (= 2.7.0)

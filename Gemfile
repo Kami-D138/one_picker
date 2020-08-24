@@ -23,6 +23,7 @@ gem 'font-awesome-rails'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'cocoon'
+gem 'google-analytics-rails'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'
