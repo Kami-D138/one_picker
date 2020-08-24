@@ -11,7 +11,7 @@
         <%= paginate @menus %>
           <div class = "menu-contents">
             <% @menus.each do |menu| %>
-              <ol id = "menu-<%= menu.id %>" class="shadow p-3 mb-5 bg-white rounded">
+              <ol id = "menu-<%= menu.id %>" class="shadow p-3 mb-5 bg-light rounded">
                 <div class= "menu-body">
                   <div class=  "menu_name">
                     <h5><%= link_to menu.name, menu_path(menu.id), class:"text-dark" %></h5>

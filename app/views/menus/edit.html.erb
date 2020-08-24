@@ -37,9 +37,9 @@
               <h5><%= f.label :ジャンル%></h5>
               <%= f.collection_select(:genre_id, Genre.all, :id, :name, {:prompt=>true}, {class: "form-control"})%>
             </div>
-            <div class = "type form-group mt-4 col-6">
+            <div class = "sub_genre form-group mt-4 col-6">
               <h5><%= f.label :種別%></h5>
-              <%= f.collection_select(:type_id, Type.all, :id, :name, {:prompt=>true}, {class: "form-control"})%>
+              <%= f.collection_select(:sub_genre_id, SubGenre.all, :id, :name, {:prompt=>true}, {class: "form-control"})%>
             </div>
           </div>
 

@@ -38,7 +38,7 @@ ja:
               blank: "が入力されていません。"
             genre:
               required: "を選択してください"
-            type:
+            sub_genre:
               required: "を選択してください"
     attributes:
       user:
@@ -50,7 +50,7 @@ ja:
         remember_me: "ログインを記憶"
       menu:
         name: "料理名"
-        type: "種別"
+        sub_genre: "種別"
         genre: "ジャンル"
     models:
       user: "ユーザ"

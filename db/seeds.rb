@@ -11,9 +11,9 @@ genres.each do |genre|
     Genre.create!(name: genre)
 end
 
-types = ["ごはん・麺・パン","メイン","サイド","スープ","サラダ","デザート","その他"]
-types.each do |type|
-    Type.create!(name: type)
+sub_genres = ["ごはん・麺・パン","メイン","サイド","スープ","サラダ","デザート","その他"]
+sub_genres.each do |sub_genre|
+    SubGenre.create!(name: sub_genre)
 end
 
 
@@ -35,17 +35,17 @@ end
 
 users = User.all
 genre_num = (1..6).to_a
-type_num = (1..7).to_a
+sub_genre_num = (1..7).to_a
 random_num = (1..10).to_a
 users.each do |user|
     40.times do
         genre_id = genre_num.sample
-        type_id = type_num.sample
+        sub_genre_id = sub_genre_num.sample
         name  = Faker::Food.sushi
         memo = Faker::Food.description
         user.menus.create!(name:  name,
                         genre_id: genre_id,
-                        type_id:  type_id,
+                        sub_genre_id:  sub_genre_id,
                         memo: memo)
     end
 

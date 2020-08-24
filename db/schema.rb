@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200727074855) do
+ActiveRecord::Schema.define(version: 20200824145550) do
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
@@ -32,13 +32,13 @@ ActiveRecord::Schema.define(version: 20200727074855) do
     t.string "memo"
     t.integer "status"
     t.integer "user_id"
-    t.integer "type_id"
+    t.integer "sub_genre_id"
     t.integer "genre_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "image"
     t.index ["genre_id"], name: "index_menus_on_genre_id"
-    t.index ["type_id"], name: "index_menus_on_type_id"
+    t.index ["sub_genre_id"], name: "index_menus_on_sub_genre_id"
     t.index ["user_id"], name: "index_menus_on_user_id"
   end
 
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 20200727074855) do
     t.index ["menu_id"], name: "index_preparations_on_menu_id"
   end
 
-  create_table "types", force: :cascade do |t|
+  create_table "sub_genres", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

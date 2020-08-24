@@ -6,6 +6,15 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
+  def set_menu_details
+    @ingredients = Ingredient.where(menu_id: @menu.id)
+    @preparations = Preparation.where(menu_id: @menu.id)
+  end
+
+  def set_user
+    @user = User.find_by(id: params[:id])
+  end
+
   protected
 
   # 入力フォームからアカウント名情報をDBに保存するために追加
