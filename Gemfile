@@ -22,6 +22,7 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'cocoon'
 gem 'kaminari'
+gem 'google-analytics-rails'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'

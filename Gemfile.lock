@@ -1,6 +1,7 @@
 GIT
   remote: https://github.com/faker-ruby/faker.git
-  revision: aaed3cdd353956deb6f4051b27e7bb4601890d4e
+  revision: 35ec5ed4e8a7f7477a6583a8de9a70256d4192a2
+
   branch: master
   specs:
     faker (2.13.0)
@@ -49,12 +50,12 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
-    aliyun-sdk (0.7.3)
+    aliyun-sdk (0.8.0)
       nokogiri (~> 1.6)
       rest-client (~> 2.0)
     ansi (1.5.0)
     arel (8.0.0)
-    autoprefixer-rails (9.8.6.1)
+    autoprefixer-rails (9.8.6.2)
       execjs
     bcrypt (3.1.12)
     bindex (0.8.1)
@@ -91,7 +92,7 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-i18n (1.9.1)
+    devise-i18n (1.9.2)
       devise (>= 4.7.1)
     devise-i18n-views (0.3.7)
     domain_name (0.5.20190701)
@@ -138,8 +139,8 @@ GEM
       fog-xml (~> 0.1.1)
       ipaddress (~> 0.5)
       json (~> 2.0)
-    fog-aliyun (0.3.18)
-      aliyun-sdk (~> 0.7.3)
+    fog-aliyun (0.3.19)
+      aliyun-sdk (~> 0.8.0)
       fog-core
       fog-json
       ipaddress (~> 0.8)
@@ -263,6 +264,7 @@ GEM
     formatador (0.2.5)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    google-analytics-rails (1.1.1)
     guard (2.14.1)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -485,6 +487,7 @@ DEPENDENCIES
   faker!
   fog (= 1.42)
   font-awesome-rails
+  google-analytics-rails
   guard (= 2.14.1)
   guard-minitest (= 2.4.6)
   jbuilder (= 2.7.0)
