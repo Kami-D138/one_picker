@@ -2,6 +2,7 @@ class CreateMenus < ActiveRecord::Migration[5.1]
   def change
     create_table :menus do |t|
       t.string :name
+      t.text :ingredient
       t.text :recipe
       t.string :memo
       t.integer :status
