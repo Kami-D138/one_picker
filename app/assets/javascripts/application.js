@@ -13,6 +13,17 @@
 //= require jquery
 //= require rails-ujs
 //= require bootstrap
-//= require turbolinks
-//= require_tree .
 //= require cocoon
+//= require_tree .
+
+$(document).ready(function() {
+    $('.mypattern').slick({
+    autoplay: true,
+    autoplaySpeed: 2500,
+    speed: 800,
+    dots: true,
+    arrows: false,
+    centerMode: true,
+    centerPadding: '20%',
+    });
+});

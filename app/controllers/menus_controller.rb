@@ -27,7 +27,7 @@ class MenusController < ApplicationController
       redirect_to menus_path
     else
       flash.now[:danger] = "投稿できませんでした。"
-      render new_menu_path
+      render "new"
     end
   end
 
@@ -41,8 +41,8 @@ class MenusController < ApplicationController
         flash[:primary] = "編集しました。"
         redirect_to menus_path
       else
-        flash[:danger] = "編集できませんでした。"
-        redirect_to edit_menu_path
+        flash.now[:danger] = "編集できませんでした。"
+        render "edit"
       end
     else
       redirect_to root_path
@@ -59,8 +59,8 @@ class MenusController < ApplicationController
           redirect_to menus_path
         end
       else
-        render 'index'
         flash[:danger].now = "メニューの削除に失敗しました"
+        render 'index'
       end
     else
       redirect_to root_path

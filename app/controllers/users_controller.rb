@@ -12,8 +12,8 @@ class UsersController < ApplicationController
       flash[:primary] =  "編集しました。"
       redirect_to user_path
     else
-      flash[:danger] = "編集できませんでした。"
-      redirect_to user_path
+      flash.now[:danger] = "編集できませんでした。"
+      render "edit"
     end
   end
 

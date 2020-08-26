@@ -4,59 +4,7 @@
       <div class="col-md-8 shadow-sm p-3 my-5 bg-white rounded">
         <div class="col-md-12">
           <%= render "shared/error_messages", object: f.object %>
-          <div class="menu_name_form form-group mt-5">
-              <h3><%= f.label :料理名, class:"mr-0" %></h3>
-              <%= f.text_field :name, autofocus: true, placeholder: "例) ハンバーグ", class: "form-control"%>
-          </div>
-
-          <div class="ingredient form-group mt-4">
-            <h3>材料</h3>
-            <%= f.fields_for :ingredients do |ingredient| %>
-              <div class="ingredient_form">
-                <%= render "shared/ingredient_fields", f: ingredient%>
-                  <div class="links">
-                    <%= link_to_add_association "材料追加", f , :ingredients, partial: 'shared/ingredient_fields'%>
-                  </div>
-              </div>
-            <% end %>
-          </div>
-          <div class="step form-group mt-4">
-            <h3>調理方法</h3>
-            <%= f.fields_for :preparations do |preparation| %>
-              <div class="step_form">
-                <%= render "shared/preparation_fields", f: preparation %>
-                  <div class="links">
-                    <%= link_to_add_association "手順追加", f , :preparations, partial: 'shared/preparation_fields'%>
-                  </div>
-              </div>
-            <% end %>
-          </div>
-
-          <div class = "form-row">
-            <div class = "genre form-group mt-4 col-6">
-              <h5><%= f.label :ジャンル%></h5>
-              <%= f.collection_select(:genre_id, Genre.all, :id, :name, {:prompt=>true}, {class: "form-control"})%>
-            </div>
-            <div class = "sub_genre form-group mt-4 col-6">
-              <h5><%= f.label :種別%></h5>
-              <%= f.collection_select(:sub_genre_id, SubGenre.all, :id, :name, {:prompt=>true}, {class: "form-control"})%>
-            </div>
-          </div>
-
-          <div class="memo form-group mt-4">
-            <h5><%= f.label :コメント %></h5>
-            <div class = "memo_form">
-              <%= f.text_field :memo, class: "form-control" %>
-            </div>
-          </div>
-
-          <div class="image mt-4">
-            <h5><%= f.label :画像 %></h5>
-            <div class = "image_form">
-              <%= f.file_field :image%>
-            </div>
-          </div>
-
+          <%= render "shared/menu_post_form", f: f%>
           <div class="btns mt-5 text-center">
             <%= f.submit "完了", class: "btn btn-primary mr-5 col-2" %>
             <%= link_to "削除", menu_path(@menu.id), method: :delete,

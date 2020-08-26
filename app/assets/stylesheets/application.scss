@@ -1,52 +1,134 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
- .alert{
-   margin-bottom: 0px;
- }
 
- .error_messages{
-     color: tomato;
- }
-
- .index_pic{
-     height: auto;
-     width: 100% ;
- }
-
- .menu_image{
-   height: auto;
-   width: 100%;
- }
-
- .field_with_errors {
-    display: contents;
-    // // もしくは
-    // display: inline;
-  }
-
-
-  // login-form
-
-  .login_form{
-    margin-top: 150px;
-    max-width: 600px;
-    height: 360px;
-    border: 1px solid #9C9C9C;
-    background-color: #EAEAEA;
-  }
-  .login_text {
-    padding: 20px;
-  }
-  #login-link {
-    margin-top: -85px;
-    .devise_link{
-        color: #17a2b8;
-    }
+ //error-messages
+.alert{
+  margin-bottom: 0px;
 }
 
-//registration_form
+.error_messages{
+  color: rgb(253, 55, 19);
+}
 
+.field_with_errors {
+  display: contents;
+}
+
+
+//navbar
+.header-nav{
+  background-color:hsla(41, 100%, 50%, 0.932);
+}
+
+
+//wrapper
+.wrapper{
+  background-color:hsla(27, 100%, 95%, 0.76);
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 300px;
+  box-sizing: border-box;
+}
+
+
+//footer
+footer{
+  width: 100%;
+  color: #fff;
+  background-color:hsla(41, 100%, 50%, 0.932);
+  position: absolute;
+  bottom: 0;
+}
+
+
+//top-page
+.top-page{
+  padding-top: 20px;
+}
+
+
+//slick
+.slider {
+  display: none;
+  width: auto;
+  margin: 0 auto 80px;
+}
+
+.slider.slick-initialized{
+  display: block;
+}
+
+.slick-slide img {
+  width: 100%;
+  height: auto;
+}
+
+.mypattern {
+  width: 100%;
+}
+
+.mypattern .slick-slide {
+  margin-right: 5px;
+}
+
+.mypattern .slick-slide:not(.slick-center) {
+  -webkit-filter: opacity(70%);
+  -moz-filter: opacity(70%);
+  -o-filter: opacity(70%);
+  -ms-filter: opacity(70%);
+  filter: opacity(70%);
+  transition: 0.2s linear;
+}
+
+.meal-pic{
+  border-radius: 20px;
+}
+
+
+//menu-index
+.menu-body{
+  p{
+    margin-bottom: 0px;
+    font-size: 10px;
+  }
+}
+
+.index_pic{
+  height: auto;
+  width: 100% ;
+}
+
+
+//menu-show
+.menu_image{
+  height: auto;
+  width: 100%;
+}
+
+
+// login-form
+.login_form{
+  margin-top: 150px;
+  max-width: 600px;
+  height: 360px;
+  border: 1px solid #9C9C9C;
+  background-color: #EAEAEA;
+}
+
+.login_text {
+  padding: 20px;
+}
+
+#login-link {
+  margin-top: -85px;
+  .devise_link{
+      color: #17a2b8;
+  }
+}
+
+
+//registration_form
 .registration_form{
   margin-top: 150px;
   max-width: 600px;
@@ -54,6 +136,7 @@
   border: 1px solid #9C9C9C;
   background-color: #EAEAEA;
 }
+
 .registration_text {
   padding: 20px;
 }
@@ -67,6 +150,7 @@
       color: #17a2b8;
   }
 }
+
 
 //password-reset
 .reset_form{
@@ -89,10 +173,12 @@
   }
 }
 
+
 //user_page
 .userinfo_text{
   padding-top: 20px;
 }
+
 .userinfo_form{
 margin-top:200px;
 max-width: 600px;
@@ -101,71 +187,31 @@ border: 1px solid #9C9C9C;
 background-color: #EAEAEA;
 }
 
+
 // ページネーション
 .pagination{
+  .disabled{
+    background:hsla(27, 100%, 95%, 0.76);
+  }
   li{
     .page-link {
       background:hsla(27, 100%, 95%, 0.76);
-      border: none;     /*枠線をなくす*/
-      color: #353131;   /*文字の色を変える*/
+      border: none;
+      color: #353131;
       margin-right:5px;
       margin-left:5px;
     }
   }
-  .active{ //表示しているページ
+  .active{
     .page-link {
-      background: #93c9ff;     /*背景の色を変える*/
-      border-radius: 30px;     /*角を丸くする*/
+      background: #93c9ff;
+      border-radius: 30px;
     }
   }
   li{
     .page-link:hover {
-      border-radius: 30px;    /*角を丸くする*/
+      border-radius: 30px;
       background:#b8babb;
     }
   }
-}
-
-//menu-index
-.menu-body{
-  p{
-    margin-bottom: 0px;
-    font-size: 10px;
-  }
-}
-
-//top-page
-.top-page{
-  padding-top: 100px;
-}
-
-//pickup-btns
-// .pickup-btns{
-//   height: auto;
-// }
-
-//navbar
-.header-nav{
-  background-color:hsla(41, 100%, 50%, 0.932);
-}
-
-.wrapper{
-  background-color:hsla(27, 100%, 95%, 0.76);
-  min-height: 100vh;
-  position: relative;/*←相対位置*/
-  padding-bottom: 300px;/*←footerの高さ*/
-  box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
-}
-footer{
-  width: 100%;
-  color: #fff;
-  background-color:hsla(41, 100%, 50%, 0.932);
-  position: absolute;/*←絶対位置*/
-  bottom: 0; /*下に固定*/
-}
-
-//wealcome-page
-.meal{
-  height: 50vh;
-  width: 100%;
 }
