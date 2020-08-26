@@ -3,7 +3,17 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
-    home_top_path
+    root_path
+  end
+
+  def set_menu_details
+    @ingredients = Ingredient.where(menu_id: @menu.id)
+    @preparations = Preparation.where(menu_id: @menu.id)
+  end
+
+  def set_user
+    @user = User.find_by(id: params[:id])
+
   end
 
   protected

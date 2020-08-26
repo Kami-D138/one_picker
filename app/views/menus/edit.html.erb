@@ -1,61 +1,17 @@
-<h1>レシピ編集</h1>
 <%= form_for(@menu) do |f| %>
-  <%= render "shared/error_messages", object: f.object %>
-
-  <div class="field">
-    <%= f.label :料理名 %><br/>
-    <%= f.text_field :name, autofocus: true %>
-  </div>
-
-  <div class="ingredient">
-    <p>材料</p>
-    <%= f.fields_for :ingredients do |ingredient| %>
-      <div class="field">
-        <%= render "shared/ingredient_fields", f: ingredient%>
-          <div class="links">
-            <%= link_to_add_association "材料追加", f , :ingredients, partial: 'shared/ingredient_fields' %>
+  <div class = "container">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-md-8 shadow-sm p-3 my-5 bg-white rounded">
+        <div class="col-md-12">
+          <%= render "shared/error_messages", object: f.object %>
+          <%= render "shared/menu_post_form", f: f%>
+          <div class="btns mt-5 text-center">
+            <%= f.submit "完了", class: "btn btn-primary mr-5 col-2" %>
+            <%= link_to "削除", menu_path(@menu.id), method: :delete,
+                                                    data: {confirm: "削除してよろしいですか？"}, class: "btn btn-danger ml-5 col-2"%>
           </div>
+        </div>
       </div>
-    <% end %>
+    </div>
   </div>
-  
-</br>
-  <div class="step">
-    <p>調理方法</p>
-    <%= f.fields_for :preparations do |preparation| %>
-      <div class="field">
-        <%= render "shared/preparation_fields", f: preparation %>
-          <div class="links">
-            <%= link_to_add_association "手順追加", f , :preparations, partial: 'shared/preparation_fields' %>
-          </div>
-      </div>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :ひとこと %><br/>
-    <%= f.text_field :memo%>
-  </div>
-
-  <div class="field"> 
-  <%= f.label :ジャンル%><br/>
-  <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
-</div>
-  
-  <div class="field"> 
-    <%= f.label :種別%><br/>
-    <%= f.collection_select :type_id, Type.all, :id, :name, include_blank: "選択して下さい" %>
-  </div>
-
-  <div class="field"> 
-    <%= f.label :画像 %><br/>
-    <%= f.file_field :image %>
-  </div>
-
-  <div class="btn">
-    <%= f.submit "編集", class: "btn btn-primary" %>
-  </div>
-
-    <%= link_to "削除", menu_path(@menu.id), method: :delete,
-                                              data: {confirm: "削除してよろしいですか？"}, class: "btn btn-danger"%>
 <% end %>

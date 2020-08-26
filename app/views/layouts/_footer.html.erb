@@ -1,0 +1,17 @@
+<ul class="list-unstyled list-inline text-center py-1">
+    <% unless user_signed_in? %>
+        <li class="list-inline-item">
+            <p class="mb-1">登録はこちら</p>
+        </li></br>
+        <li class="list-inline-item">
+            <%= link_to "新規登録", new_user_registration_path, class: "btn btn-success" %>
+        </li>
+    <% else %>
+        <li class="list-inline-item">
+            <%= link_to "PickApp", root_path, class:"text-dark" %>
+        </li>
+    <% end %>
+</ul>
+<div class="footer-copyright text-center py-1">© 2020 :
+    <p> DK</p>
+</div>

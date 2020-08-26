@@ -1,0 +1,31 @@
+<div class = "container">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-6 userinfo_form">
+            <div class="col-md-12">
+                <h3 class="userinfo_text text-center text-info">アカウント情報変更</h3>
+                <%= form_for(@user) do |f| %>
+                    <%= render "shared/error_messages", object: f.object %>
+                    <div class="form-group">
+                        <%= f.label :ニックネーム, class:"text-info" %><br />
+                        <%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control" %>
+                    </div>
+                    <div class="form-group">
+                        <%= f.label :メールアドレス, class:"text-info" %><br />
+                        <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+                    </div>
+                    <div class = "row mb-3">
+                        <div class="actions col-md-6 text-center">
+                            <i>変更内容の保存はこちら</i></br>
+                            <%= f.submit "完了", class: "btn btn-info btn-md" %>
+                        </div>
+                        <div class = "account-delete text-center col-md-6">
+                            <i>アカウントの削除はこちら</i>
+                            <%= link_to "削除", user_path(@user.id), method: :delete,
+                                                        data: {confirm: "削除してよろしいですか？"}, class: "btn btn-danger text-center"%>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

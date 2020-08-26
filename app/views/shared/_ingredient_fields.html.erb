@@ -1,6 +1,10 @@
-<div class="nested-fields">
-    <%= f.text_field :item, placeholder: "例) 合い挽き肉" %>
-    <%= f.text_field :quantity, placeholder: "例) 250g" %>
+<div class="nested-fields form-row">
+    <div class = "col-7 item-name">
+        <%= f.text_field :item, placeholder: "例) 合い挽き肉", class: "form-control" %>
+    </div>
+    <div class = "col-4 item-quantity">
+        <%= f.text_field :quantity, placeholder: "例) 250g", class: "form-control" %>
+    </div>
     <%= f.hidden_field :menu_id, :value => @menu.id %>
-    <%= link_to_remove_association "削除", f %>
+    <%= link_to_remove_association "", f, class:"fas fa-times col-1 text-danger" %>
 </div>

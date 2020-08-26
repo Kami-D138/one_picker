@@ -1,10 +1,12 @@
 <div class = "container">
-    <div class = "row">
-        <div class = "col-3 my-5">
-            <%= render "home/pickup_btn"%>
+    <div class="row justify-content-center align-items-center">
+        <div class="col-md-8 my-5 shadow p-3 bg-white rounded">
+            <div class="col-md-12">
+                <%= render "shared/menu_detail" %>
+            </div>
         </div>
-        <div class = "col-7">
-            <%= render "shared/menu_detail" %>
+        <div class="col-md-2 shadow  mt-5 p-3 bg-white rounded align-self-start m-3">
+            <%= render "home/pickup_btn"%>
         </div>
     </div>
 </div>

@@ -6,7 +6,7 @@ class CreateMenus < ActiveRecord::Migration[5.1]
       t.string :memo
       t.integer :status
       t.references :user, foreign_key: true
-      t.references :type, foreign_key: true
+      t.references :sub_genre, foreign_key: true
       t.references :genre, foreign_key: true
 
       t.timestamps

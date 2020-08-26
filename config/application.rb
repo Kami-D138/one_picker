@@ -17,6 +17,8 @@ module OnePicker
   end
 end
 
+
+
 module TimeFormatSandbox
   class Application < Rails::Application
     # タイムゾーンを日本時間に設定

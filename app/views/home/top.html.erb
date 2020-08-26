@@ -1,18 +1,62 @@
+<div class="slider  mypattern">
+    <div class = "inner-item">
+        <%= image_tag '1283094_s.jpg', class: "meal-pic" %>
+    </div>
+    <div class = "inner-item">
+        <%= image_tag '1283096_s.jpg', class: "meal-pic" %>
+    </div>
+    <div class = "inner-item">
+       <%= image_tag '1283079_s.jpg', class: "meal-pic" %>
+    </div>
+</div>
 <div class = "container">
-    <div class = "row">
-        <div class = "col-3 my-5">
-            <%= render "home/pickup_btn"%>
+    <div class="row top-page justify-content-center align-items-center">
+        <div class="col-md-8">
+            <div class="col-md-12 p-3">
+                <div class="jumbotron">
+                    <h1 class="display-5">P!CK-APP</h1>
+                    <p class="lead">あなたの『今日何作ろう？』をお手伝い。</br>
+                        PickUpボタンでランダムにレシピをピックアップします！</p>
+                    <hr class="my-2">
+                    <p>毎日毎晩の献立を考えるのは時間のかかること。</br>
+                        全投稿の中から今日のあなたの献立候補を表示します。</br>
+                        もしかしたら、あなたの新しい得意な料理のレパートリーも増えるかも?</p>
+                    <div class="pickup-btns row justify-content-around">
+                        <div class ="col-md-4 text-center">
+                            <%= link_to "Pick Up", home_common_recipe_path, class: "btn btn-outline-success" %>
+                            <p> From <%= @menus.count %> Recipes</p>
+                        </div>
+                        <% if user_signed_in?%>
+                            <div class ="col-md-4 text-center">
+                                <%= link_to "Pick Up", home_my_recipe_path, class: "btn btn-outline-danger" %>
+                                <p>From My <%= @original_menus.count %> Recipes</p>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="jumbotron col-7 my-5">
-            <h1 class="display-5">P!CK-APP</h1>
-            <p class="lead">あなたの『今日何作ろう？』をお手伝い。</br>
-                PickUpボタンでランダムにレシピをピックアップします！</p>
-            <hr class="my-4">
-            <p>毎日毎晩の献立を考えるのは時間のかかること。</br>
-                全投稿の中から今日のあなたの献立候補を表示します。</br>
-                もしかしたら、あなたの新しい得意な料理のレパートリーも増えるかも?</p>
-            <%= link_to "Pick Up", home_common_recipe_path, class: "btn btn-outline-success" %>
-            <h5> From <%= @menus.count %> Recipes</h5>
+        <div class="col-md-2 shadow p-3 rounded align-self-start m-3 bg-light">
+            <div class = "welcome-btns">
+                <% unless user_signed_in?%>
+                    <div class ="text-center my-4">
+                        <p>登録はこちら↓</p>
+                        <%= link_to "新規登録", new_user_registration_path, class: "btn btn-success" %>
+                    </div>
+                    <div class ="text-center my-4">
+                        <p>登録済みの方はこちら↓</p>
+                        <%= link_to "ログイン",new_user_session_path, class: "btn btn-primary" %>
+                    </div>
+                <% else %>
+                    <div class ="text-center my-4">
+                        <%= link_to "レシピ投稿", new_menu_path, class: "btn btn-outline-info" %>
+                    </div>
+                    <div class ="text-center my-4">
+                        <%= link_to "ログアウト",destroy_user_session_path, method: :delete,
+                                data: {confirm: "ログアウトしますか？"}, class: "btn btn-outline-danger" %>
+                    </div>
+                <% end %>
+            </div>
         </div>
     </div>
 </div>

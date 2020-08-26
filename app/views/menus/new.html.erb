@@ -1,57 +1,15 @@
-<div class = "container mx-auto" style = "width: 200;">
-  <%= form_for(@menu) do |f| %>
-    <%= render "shared/error_messages", object: f.object %>
-      <div class="field mt-5">
-        <h5><%= f.label :料理名 %></h5>
-        <%= f.text_field :name, autofocus: true, placeholder: "例) ハンバーグ" %>
-      </div>
-
-      <div class="ingredient mt-4">
-        <h5>材料</h5>
-        <%= f.fields_for :ingredients do |ingredient| %>
-          <div class="field">
-            <%= render "shared/ingredient_fields", f: ingredient%>
-              <div class="links">
-                <%= link_to_add_association "材料追加", f , :ingredients, partial: 'shared/ingredient_fields' %>
-              </div>
+<%= form_for(@menu) do |f| %>
+  <div class = "container">
+    <div class="row justify-content-center align-items-center">
+      <div class="col-md-8 shadow-sm p-3 my-5 bg-white rounded">
+        <div class="col-md-12">
+          <%= render "shared/error_messages", object: f.object %>
+          <%= render "shared/menu_post_form", f: f%>
+          <div class="form_btn mt-5 text-center">
+            <%= f.submit "投稿", class: "btn btn-primary col-4" %>
           </div>
-        <% end %>
+        </div>
       </div>
-      
-      <div class="step mt-4">
-        <h5>調理方法</h5>
-        <%= f.fields_for :preparations do |preparation| %>
-          <div class="field">
-            <%= render "shared/preparation_fields", f: preparation %>
-              <div class="links">
-                <%= link_to_add_association "手順追加", f , :preparations, partial: 'shared/preparation_fields' %>
-              </div>
-          </div>
-        <% end %>
-      </div>
-
-      <div class="field mt-4">
-        <h5><%= f.label :ひとこと %></h5>
-        <%= f.text_field :memo %>
-      </div>
-
-      <div class="field mt-4"> 
-        <h5><%= f.label :ジャンル%></h5>
-        <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
-      </div>
-      
-      <div class="field mt-4"> 
-        <h5><%= f.label :種別%></h5>
-        <%= f.collection_select :type_id, Type.all, :id, :name, include_blank: "選択して下さい" %>
-      </div>
-
-      <div class="field mt-4"> 
-        <h5><%= f.label :画像 %></h5>
-        <%= f.file_field :image %>
-      </div>
-
-      <div class="btn">
-        <%= f.submit "投稿", class: "btn btn-primary" %>
-      </div>
-  <% end %>
-</div>
+    </div>
+  </div>
+<% end %>

@@ -1,11 +1,217 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
- 
- .error_messages{
-     color: tomato;
- }
- 
- .menu_pic{
-     height: 100px; 
-     width:  100px;
- }
+
+
+ //error-messages
+.alert{
+  margin-bottom: 0px;
+}
+
+.error_messages{
+  color: rgb(253, 55, 19);
+}
+
+.field_with_errors {
+  display: contents;
+}
+
+
+//navbar
+.header-nav{
+  background-color:hsla(41, 100%, 50%, 0.932);
+}
+
+
+//wrapper
+.wrapper{
+  background-color:hsla(27, 100%, 95%, 0.76);
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 300px;
+  box-sizing: border-box;
+}
+
+
+//footer
+footer{
+  width: 100%;
+  color: #fff;
+  background-color:hsla(41, 100%, 50%, 0.932);
+  position: absolute;
+  bottom: 0;
+}
+
+
+//top-page
+.top-page{
+  padding-top: 20px;
+}
+
+
+//slick
+.slider {
+  display: none;
+  width: auto;
+  margin: 0 auto 80px;
+}
+
+.slider.slick-initialized{
+  display: block;
+}
+
+.slick-slide img {
+  width: 100%;
+  height: auto;
+}
+
+.mypattern {
+  width: 100%;
+}
+
+.mypattern .slick-slide {
+  margin-right: 5px;
+}
+
+.mypattern .slick-slide:not(.slick-center) {
+  -webkit-filter: opacity(70%);
+  -moz-filter: opacity(70%);
+  -o-filter: opacity(70%);
+  -ms-filter: opacity(70%);
+  filter: opacity(70%);
+  transition: 0.2s linear;
+}
+
+.meal-pic{
+  border-radius: 20px;
+}
+
+
+//menu-index
+.menu-body{
+  p{
+    margin-bottom: 0px;
+    font-size: 10px;
+  }
+}
+
+.index_pic{
+  height: auto;
+  width: 100% ;
+}
+
+
+//menu-show
+.menu_image{
+  height: auto;
+  width: 100%;
+}
+
+
+// login-form
+.login_form{
+  margin-top: 150px;
+  max-width: 600px;
+  height: 360px;
+  border: 1px solid #9C9C9C;
+  background-color: #EAEAEA;
+}
+
+.login_text {
+  padding: 20px;
+}
+
+#login-link {
+  margin-top: -85px;
+  .devise_link{
+      color: #17a2b8;
+  }
+}
+
+
+//registration_form
+.registration_form{
+  margin-top: 150px;
+  max-width: 600px;
+  height: auto;
+  border: 1px solid #9C9C9C;
+  background-color: #EAEAEA;
+}
+
+.registration_text {
+  padding: 20px;
+}
+
+#regiform-link {
+  padding-bottom: 20px;
+  p{
+    margin-bottom: -5px;
+  }
+  .devise_link{
+      color: #17a2b8;
+  }
+}
+
+
+//password-reset
+.reset_form{
+  margin-top: 150px;
+  max-width: 600px;
+  height: auto;
+  border: 1px solid #9C9C9C;
+  background-color: #EAEAEA;
+}
+
+.reset_text{
+  padding: 20px;
+}
+
+#reset-link{
+  margin-top: 30px;
+  padding-bottom: 20px;
+  .devise_link{
+      color: #17a2b8;
+  }
+}
+
+
+//user_page
+.userinfo_text{
+  padding-top: 20px;
+}
+
+.userinfo_form{
+margin-top:200px;
+max-width: 600px;
+height: auto;
+border: 1px solid #9C9C9C;
+background-color: #EAEAEA;
+}
+
+
+// ページネーション
+.pagination{
+  .disabled{
+    background:hsla(27, 100%, 95%, 0.76);
+  }
+  li{
+    .page-link {
+      background:hsla(27, 100%, 95%, 0.76);
+      border: none;
+      color: #353131;
+      margin-right:5px;
+      margin-left:5px;
+    }
+  }
+  .active{
+    .page-link {
+      background: #93c9ff;
+      border-radius: 30px;
+    }
+  }
+  li{
+    .page-link:hover {
+      border-radius: 30px;
+      background:#b8babb;
+    }
+  }
+}
