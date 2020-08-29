@@ -15,9 +15,9 @@ Rails.application.routes.draw do
   get  '/home/common_recipe', to: 'home#common_recipe'
   get  '/home/my_recipe',     to: 'home#my_recipe'
 
-  post '/linebot',            to: 'linebot#events'
-
   resources  :menus
   resources  :admins, only: [:index, :show, :destroy]
   resources  :users, only: [:show, :edit, :update, :destroy]
+
+  post '/callback',            to: 'linebot#callback'
 end
