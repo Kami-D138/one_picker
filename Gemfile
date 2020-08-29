@@ -23,6 +23,8 @@ gem 'rmagick'
 gem 'cocoon'
 gem 'kaminari'
 gem 'google-analytics-rails'
+gem 'line-bot-api'
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'
