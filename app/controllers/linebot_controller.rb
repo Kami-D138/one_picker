@@ -56,7 +56,7 @@ class LinebotController < ApplicationController
                 "altText": "あなたの『今日何作ろう?』のお手伝いをさせて下さい！",
                 "template": {
                     "type": "buttons",
-                    "thumbnailImageUrl": "https://bfe93cfc2da7.ngrok.io/1283079_s.jpg",
+                    "thumbnailImageUrl": "https://pick-app-recipe.herokuapp.com/1283079_s.jpg",
                     "imageAspectRatio": "rectangle",
                     "imageSize": "cover",
                     "imageBackgroundColor": "#FFFFFF",
