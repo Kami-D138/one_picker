@@ -23,6 +23,7 @@ class LinebotController < ApplicationController
                     @menus = Menu.all
                     if event.message['text'] == ("PickUp!")
                         pickup_menu
+                        menu_details
                         client.reply_message(event['replyToken'], picked_recipe)
                     else
                         client.reply_message(event['replyToken'], choices)
@@ -34,8 +35,12 @@ class LinebotController < ApplicationController
     end
 
     private
-        def all_menus_count
-            recipe_counter = Menu.all.count
+
+        def client
+            @client ||= Line::Bot::Client.new { |config|
+            config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
+            config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
+            }
         end
 
         def pickup_menu
@@ -43,11 +48,15 @@ class LinebotController < ApplicationController
             set_menu_details
         end
 
-        def client
-            @client ||= Line::Bot::Client.new { |config|
-            config.channel_secret = ENV["LINE_CHANNEL_SECRET"]
-            config.channel_token = ENV["LINE_CHANNEL_TOKEN"]
-            }
+        def menu_details
+            @menu_items = []
+            @ingredients.each do |ingredient|
+                @menu_items.push(ingredient.item)
+            end
+            @menu_steps = []
+            @preparations.each do |preparation|
+                @menu_steps.push(preparation.step)
+            end
         end
 
         def choices
@@ -80,8 +89,149 @@ class LinebotController < ApplicationController
 
         def picked_recipe
             {
-                "type": "text",
-                "text": "本日の献立に#{@menu.name}はいかがでしょうか？"
+                "type": "flex",
+                "altText": "bubble",
+                "contents":{
+                    "type": "bubble",
+                    "size": "kilo",
+                    "direction": "ltr",
+                    "header": {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "PickUPレシピ",
+                          "size": "xl",
+                          "weight": "bold",
+                          "margin": "none",
+                          "style": "normal",
+                          "align": "center"
+                        }
+                      ],
+                      "height": "50px"
+                    },
+                    "body": {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "box",
+                          "layout": "horizontal",
+                          "contents": [
+                            {
+                              "type": "text",
+                              "text": "#{@menu.name}",
+                              "size": "lg",
+                              "style": "italic",
+                              "align": "center",
+                              "decoration": "none",
+                              "wrap": true,
+                              "margin": "none",
+                              "weight": "bold"
+                            }
+                          ],
+                          "spacing": "none",
+                          "margin": "none"
+                        },
+                        {
+                          "type": "box",
+                          "layout": "vertical",
+                          "contents": [
+                            {
+                              "type": "spacer",
+                              "size": "xl"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "box",
+                          "layout": "vertical",
+                          "contents": [
+                            {
+                              "type": "text",
+                              "text": "材料:",
+                              "margin": "lg",
+                              "size": "xl",
+                              "weight": "bold",
+                              "align": "start"
+                            },
+                            {
+                              "type": "text",
+                              "text": "#{@menu_items}",
+                              "size": "md",
+                              "weight": "regular",
+                              "style": "normal",
+                              "align": "end",
+                              "decoration": "none",
+                              "wrap": true
+                            }
+                          ]
+                        },
+                        {
+                          "type": "box",
+                          "layout": "vertical",
+                          "contents": [
+                            {
+                              "type": "spacer",
+                              "size": "xl"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "box",
+                          "layout": "vertical",
+                          "contents": [
+                            {
+                              "type": "text",
+                              "text": "作り方:",
+                              "size": "xl",
+                              "weight": "bold",
+                              "style": "normal",
+                              "align": "start"
+                            },
+                            {
+                              "type": "text",
+                              "text": "#{@menu_steps}",
+                              "size": "md",
+                              "weight": "regular",
+                              "style": "normal",
+                              "decoration": "none",
+                              "align": "end",
+                              "wrap": true
+                            }
+                          ]
+                        },
+                        {
+                          "type": "box",
+                          "layout": "vertical",
+                          "contents": [
+                            {
+                              "type": "spacer",
+                              "size": "xl"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "footer": {
+                      "type": "box",
+                      "layout": "horizontal",
+                      "contents": [
+                        {
+                          "type": "button",
+                          "action": {
+                            "type": "uri",
+                            "label": "Webサイトへ",
+                            "uri": "https://pick-app-recipe.herokuapp.com/"
+                          },
+                          "style": "primary",
+                          "height": "md",
+                          "margin": "none"
+                        }
+                      ]
+                    }
+                }
             }
         end
 
