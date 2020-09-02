@@ -24,12 +24,14 @@
                     <div class="pickup-btns row justify-content-around">
                         <div class ="col-md-4 text-center">
                             <%= link_to "Pick Up", home_common_recipe_path, class: "btn btn-outline-success" %>
-                            <p> From <%= @menus.count %> Recipes</p>
+                            <p> From</br><%= "レシピ数#{@menus.count}件" %>
+                                </br>+</br> <span class = "text-danger">楽天レシピ</span>
+                            </p>
                         </div>
                         <% if user_signed_in?%>
                             <div class ="col-md-4 text-center">
                                 <%= link_to "Pick Up", home_my_recipe_path, class: "btn btn-outline-danger" %>
-                                <p>From My <%= @original_menus.count %> Recipes</p>
+                                <p>From</br>My <%= @original_menus.count %> recipes</p>
                             </div>
                         <% end %>
                     </div>
