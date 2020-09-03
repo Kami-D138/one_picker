@@ -20,11 +20,19 @@ class LinebotController < ApplicationController
             when Line::Bot::Event::Message
                 case event.type
                 when Line::Bot::Event::MessageType::Text
-                    @menus = Menu.all
+                  @menus = Menu.all
                     if event.message['text'] == ("PickUp!")
-                        pickup_menu
-                        menu_details
-                        client.reply_message(event['replyToken'], picked_recipe)
+                        random_number
+                        @head_or_tail = @num
+                        if @head_or_tail <= 1
+                          rakuten_recipe_set
+                          rakuten_menu_details
+                          client.reply_message(event['replyToken'], picked_rakuten_recipe)
+                        else
+                          pickup_menu
+                          menu_details
+                          client.reply_message(event['replyToken'], picked_recipe)
+                        end
                     else
                         client.reply_message(event['replyToken'], choices)
                     end
@@ -35,6 +43,23 @@ class LinebotController < ApplicationController
     end
 
     private
+        def menu_details
+          @items_text = ""
+          @ingredients.each do |ingredient|
+            @items_text << "\n・#{ingredient.item} ・・　#{ingredient.quantity}\n "
+          end
+          @steps_text = ""
+          @preparations.each_with_index do |preparation, i|
+            @steps_text << "\n#{i + 1}・#{preparation.step}\n"
+          end
+        end
+
+        def rakuten_menu_details
+          @rakuten_items = ""
+          @rakuten_recipe_items.each do |item|
+            @rakuten_items << "・#{item}\n"
+          end
+        end
 
         def client
             @client ||= Line::Bot::Client.new { |config|
@@ -46,17 +71,6 @@ class LinebotController < ApplicationController
         def pickup_menu
             @menu = @menus.sample
             set_menu_details
-        end
-
-        def menu_details
-            @menu_items = []
-            @ingredients.each do |ingredient|
-                @menu_items.push(ingredient.item)
-            end
-            @menu_steps = []
-            @preparations.each do |preparation|
-                @menu_steps.push(preparation.step)
-            end
         end
 
         def choices
@@ -102,7 +116,7 @@ class LinebotController < ApplicationController
                         {
                           "type": "text",
                           "text": "PickUPレシピ",
-                          "size": "xl",
+                          "size": "lg",
                           "weight": "bold",
                           "margin": "none",
                           "style": "normal",
@@ -121,8 +135,8 @@ class LinebotController < ApplicationController
                           "contents": [
                             {
                               "type": "text",
-                              "text": "#{@menu.name}",
-                              "size": "lg",
+                              "text": @menu.name,
+                              "size": "sm",
                               "style": "italic",
                               "align": "center",
                               "decoration": "none",
@@ -152,17 +166,17 @@ class LinebotController < ApplicationController
                               "type": "text",
                               "text": "材料:",
                               "margin": "lg",
-                              "size": "xl",
+                              "size": "lg",
                               "weight": "bold",
                               "align": "start"
                             },
                             {
                               "type": "text",
-                              "text": "#{@menu_items}",
-                              "size": "md",
+                              "text": @items_text,
+                              "size": "sm",
                               "weight": "regular",
                               "style": "normal",
-                              "align": "end",
+                              "align": "start",
                               "decoration": "none",
                               "wrap": true
                             }
@@ -185,19 +199,19 @@ class LinebotController < ApplicationController
                             {
                               "type": "text",
                               "text": "作り方:",
-                              "size": "xl",
+                              "size": "lg",
                               "weight": "bold",
                               "style": "normal",
                               "align": "start"
                             },
                             {
                               "type": "text",
-                              "text": "#{@menu_steps}",
-                              "size": "md",
+                              "text": @steps_text,
+                              "size": "sm",
                               "weight": "regular",
                               "style": "normal",
                               "decoration": "none",
-                              "align": "end",
+                              "align": "start",
                               "wrap": true
                             }
                           ]
@@ -234,5 +248,196 @@ class LinebotController < ApplicationController
                 }
             }
         end
+
+        def picked_rakuten_recipe
+          {
+            "type": "flex",
+            "altText": "bubble",
+            "contents":{
+                "type": "bubble",
+                "size": "mega",
+                "direction": "ltr",
+                "header": {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
+                    {
+                      "type": "text",
+                      "text": "PickUPレシピ",
+                      "size": "lg",
+                      "weight": "bold",
+                      "margin": "none",
+                      "style": "normal",
+                      "align": "center"
+                    }
+                  ],
+                  "height": "50px"
+                },
+                "body": {
+                  "type": "box",
+                  "layout": "vertical",
+                  "contents": [
+                    {
+                      "type": "box",
+                      "layout": "horizontal",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": @rakuten_recipe_title,
+                          "size": "sm",
+                          "style": "italic",
+                          "align": "center",
+                          "decoration": "none",
+                          "wrap": true,
+                          "margin": "none",
+                          "weight": "bold"
+                        }
+                      ],
+                      "spacing": "none",
+                      "margin": "none"
+                    },
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents":[
+                        {
+                          "type": "box",
+                          "layout": "vertical",
+                          "contents": [
+                            {
+                              "type": "spacer",
+                              "size": "xl"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "image",
+                          "url": @rakuten_recipe_img,
+                          "size": "full"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "spacer",
+                          "size": "xl"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "材料:",
+                          "margin": "lg",
+                          "size": "lg",
+                          "weight": "bold",
+                          "align": "start"
+                        },
+                        {
+                          "type": "text",
+                          "text": @rakuten_items,
+                          "size": "sm",
+                          "weight": "regular",
+                          "style": "normal",
+                          "align": "start",
+                          "decoration": "none",
+                          "wrap": true
+                        }
+                      ]
+                    },
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "spacer",
+                          "size": "xl"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "お料理メモ",
+                          "size": "lg",
+                          "weight": "bold",
+                          "style": "normal",
+                          "align": "start"
+                        },
+                        {
+                          "type": "text",
+                          "text": @rakuten_recipe_memo,
+                          "size": "sm",
+                          "weight": "regular",
+                          "style": "normal",
+                          "decoration": "none",
+                          "align": "start",
+                          "wrap": true
+                        }
+                      ]
+                    },
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "spacer",
+                          "size": "xl"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "box",
+                      "layout": "vertical",
+                      "contents": [
+                        {
+                          "type": "text",
+                          "text": "楽天レシピURL",
+                          "size": "lg",
+                          "weight": "bold",
+                          "style": "normal",
+                          "align": "start"
+                        },
+                        {
+                          "type": "button",
+                          "action": {
+                            "type": "uri",
+                            "label": "作り方はこちら",
+                            "uri": @rakuten_recipe_url
+                          }
+                        }
+                      ]
+                    },
+                  ]
+                },
+                "footer": {
+                  "type": "box",
+                  "layout": "horizontal",
+                  "contents": [
+                    {
+                      "type": "button",
+                      "action": {
+                        "type": "uri",
+                        "label": "Webサイトへ",
+                        "uri": "https://pick-app-recipe.herokuapp.com/"
+                      },
+                      "style": "primary",
+                      "height": "md",
+                      "margin": "none"
+                    }
+                  ]
+                }
+            }
+        }
+      end
 
 end
