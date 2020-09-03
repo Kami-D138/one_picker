@@ -25,6 +25,7 @@ gem 'kaminari'
 gem 'google-analytics-rails'
 gem 'line-bot-api'
 gem 'dotenv-rails'
+gem 'rakuten_web_service'
 
 group :development, :test do
   gem 'sqlite3', '1.3.13'
