@@ -1,11 +1,11 @@
 <div class = "container" >
-  <% if @menu.image.present? %>
-      <%= image_tag @menu.image.to_s, class:"menu_image" %>
-  <% end %>
-  <div class = "menu_name mt-3" >
-    <h3>料理名</h3>
-    <h5><%= @menu.name %></h5>
+  <div class = "menu_name text-center" >
+    <h3 class = "mt-2">料理名</h3>
+    <h4 class = "mt-3 text-warning"><%= @menu.name %></h4>
   </div>
+  <% if @menu.image.present? %>
+    <%= image_tag @menu.image.to_s, class:"menu_image" %>
+  <% end %>
   <div class = "menu_ingredient mt-5" >
     <h4>材料</h4>
     <% @ingredients.each do |ingredient|%>

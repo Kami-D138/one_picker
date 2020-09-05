@@ -2,7 +2,11 @@
     <div class="row justify-content-center align-items-center">
         <div class="col-md-8 my-5 shadow p-3 bg-white rounded">
             <div class="col-md-12">
+            <% if @lot_num <= 1 %>
+                <%= render "shared/rakuten_recipe"%>
+            <%else%>
                 <%= render "shared/menu_detail" %>
+            <% end %>
             </div>
         </div>
         <div class="col-md-2 shadow  mt-5 p-3 bg-white rounded align-self-start m-3">
