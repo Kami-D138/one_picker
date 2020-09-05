@@ -1,6 +1,6 @@
 class LinebotController < RakutenapiController
   before_action :client
-  
+
   require 'line/bot'
 
   protect_from_forgery :except => [:callback]
