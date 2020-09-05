@@ -1,4 +1,4 @@
-class HomeController < ApplicationController
+class HomeController < RakutenapiController
   before_action :authenticate_user!, only: [:my_recipe]
   before_action :set_menus, :original_menus_count
 
@@ -7,8 +7,8 @@ class HomeController < ApplicationController
 
   def common_recipe
     random_number
-    @head_or_tail = @num
-    if @head_or_tail <= 1
+    @lot_num = @random_num
+    if @lot_num <= 1
       rakuten_recipe_set
     else
       @menu = Menu.all.sample
