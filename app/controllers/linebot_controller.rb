@@ -22,7 +22,7 @@ class LinebotController < RakutenapiController
           @menus = Menu.all
           if event.message['text'] == ("PickUp!")
             random_number
-            if random_num <= 1
+            if @random_num <= 1
               rakuten_recipe_set
               rakuten_menu_details
               client.reply_message(event['replyToken'], picked_rakuten_recipe)
