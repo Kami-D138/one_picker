@@ -17,8 +17,13 @@ class HomeController < RakutenapiController
   end
 
   def my_recipe
-    @menu = current_user.menus.sample
-    set_menu_details
+    if current_user.menus.any?
+      @menu = current_user.menus.sample
+      set_menu_details
+    else
+      flash[:danger] = "レシピがありません。作成して下さい。"
+      redirect_to new_menu_path
+    end
   end
 
 
