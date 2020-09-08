@@ -76,7 +76,7 @@ class LinebotController < RakutenapiController
   def choices
     {
       "type": "template",
-      "altText": "あなたの『今日何作ろう?』のお手伝いをさせて下さい！",
+      "altText": "あなたの『今日何作ろう?』のお手伝いをさせていただきます！",
       "template": {
         "type": "buttons",
         "thumbnailImageUrl": "https://pick-app-recipe.herokuapp.com/1283079_s.jpg",
@@ -104,7 +104,7 @@ class LinebotController < RakutenapiController
   def picked_recipe
     {
       "type": "flex",
-      "altText": "bubble",
+      "altText": "あなたの『今日何作ろう?』のお手伝いをさせていただきます！",
       "contents":{
         "type": "bubble",
         "size": "kilo",
@@ -252,7 +252,7 @@ class LinebotController < RakutenapiController
   def picked_rakuten_recipe
     {
       "type": "flex",
-      "altText": "bubble",
+      "altText": "あなたの『今日何作ろう?』のお手伝いをさせていただきます！",
       "contents":{
         "type": "bubble",
         "size": "mega",

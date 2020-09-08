@@ -1,11 +1,4 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
+# ジャンル作成
 genres = ["和食","洋食","中華料理","韓国朝鮮料理","エスニック料理","その他"]
 genres.each do |genre|
     Genre.create!(name: genre)
@@ -16,14 +9,14 @@ sub_genres.each do |sub_genre|
     SubGenre.create!(name: sub_genre)
 end
 
-
-User.create!(name:  "sample",
+# ユーザ作成
+User.create!(name:  "admin",
     email: "sample@sample.com",
     password:              "123456",
     password_confirmation: "123456",
     admin: true )
 
-100.times do |n|
+29.times do |n|
     name  = Faker::Name.name
     email = "sample-#{n+1}@sample.com"
     password = "password"
@@ -33,12 +26,14 @@ User.create!(name:  "sample",
                     password_confirmation: password)
 end
 
+# ユーザ毎の偽料理データ作成
 users = User.all
 genre_num = (1..6).to_a
 sub_genre_num = (1..7).to_a
 random_num = (1..10).to_a
 users.each do |user|
-    40.times do
+    random_product = random_num.sample * random_num.sample
+    random_product.times do
         genre_id = genre_num.sample
         sub_genre_id = sub_genre_num.sample
         name  = Faker::Food.sushi

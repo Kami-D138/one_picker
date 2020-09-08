@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    if user.destroy
+    if @user.destroy
       if current_user.admin?
         redirect_to admins_path
         flash[:primary] = "ユーザーを削除しました。"
