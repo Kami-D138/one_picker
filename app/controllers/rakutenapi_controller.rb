@@ -1,7 +1,7 @@
 class RakutenapiController < ApplicationController
     # ランダム機能の要
     def random_number
-        @random_num = [0,1,2,3].sample
+        @random_num = rand(4)
     end
 
     # カテゴリIDをランダムでピックアップ
