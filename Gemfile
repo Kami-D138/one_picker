@@ -6,7 +6,7 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 gem 'mini_magick',             '4.7.0'
 gem 'bootstrap', '~> 4.5.0'
 gem 'bootstrap-sass',          '3.3.7'
-gem 'puma',                    '3.9.1'
+gem 'puma',                    '3.12.6'
 gem 'sass-rails',              '5.0.6'
 gem 'uglifier',                '3.2.0'
 gem 'coffee-rails',            '4.2.2'
